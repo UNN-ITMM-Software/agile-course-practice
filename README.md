@@ -1,5 +1,7 @@
 # Спецкурс "Agile Development"
 
+[![Join the chat at https://gitter.im/agile-course-practice-2019/community](https://badges.gitter.im/agile-course-practice-2019/community.svg)](https://gitter.im/agile-course-practice-2019/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Join the chat][gitter-badge]][gitter]
 [![Build Status][travis-badge]][travis]
 [![Coverage Status][coveralls-badge]][coveralls]
