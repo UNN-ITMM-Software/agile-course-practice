@@ -13,10 +13,10 @@ public class PovelikinRostislavTest {
 
     @Test
     public void isDefaultComplexNumberNeutral() {
-        ComplexNumber default_number = new ComplexNumber();
+        ComplexNumber defaultNumber = new ComplexNumber();
         ComplexNumber z = new ComplexNumber(1, 2);
 
-        ComplexNumber sum  = z.add(default_number);
+        ComplexNumber sum  = z.add(defaultNumber);
 
         assertTrue(sum.equals(z));
     }
