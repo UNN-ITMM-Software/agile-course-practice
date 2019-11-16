@@ -53,7 +53,7 @@ project(":code/korniakov-kirill-lab3/Infrastructure").name = "korniakov-kirill-l
 // Алексеев Сергей
 // Антипин Никита
 include "code/distance-between-vectors"
-project(":code/distance-between-vectors").name = "distanceBetweenVectors-Model"
+project(":code/distance-between-vectors").name = "distance-between-vectors"
 // Ахмедов Саркар
 // Бевзюк Семен
 // Власов Антон
