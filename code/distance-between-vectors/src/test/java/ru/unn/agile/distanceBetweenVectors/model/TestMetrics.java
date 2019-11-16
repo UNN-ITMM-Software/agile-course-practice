@@ -60,4 +60,31 @@ public class TestMetrics {
         float metricL2 = new VectorMetric().Calculate_L2(v);
         assertEquals(7.723988606931007f, metricL2, 0.0001);
     }
+
+    @Test
+    public void canCalculateMetricOneDimensionalVector_L3() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(-2.0f);
+        float metricL3 = new VectorMetric().Calculate_L3(v);
+        assertEquals(2.0f, metricL3, 0.0001);
+    }
+
+    @Test
+    public void canCalculateMetricTwoDimensionalVector_L3() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(2.0f);
+        v.add(-3.0f);
+        float metricL3 = new VectorMetric().Calculate_L3(v);
+        assertEquals(3.2710663101886f, metricL3, 0.0001);
+    }
+
+    @Test
+    public void canCalculateMetricThreeDimensionalVector_L3() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(2.0f);
+        v.add(2.5f);
+        v.add(-4.0f);
+        float metricL3 = new VectorMetric().Calculate_L3(v);
+        assertEquals(4.4416330599643f, metricL3, 0.0001);
+    }
 }
