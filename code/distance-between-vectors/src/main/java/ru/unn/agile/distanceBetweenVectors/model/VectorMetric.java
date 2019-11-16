@@ -9,4 +9,9 @@ public class VectorMetric {
         x.forEach((elem) -> sumOfModules += Math.abs((float) elem));
         return sumOfModules;
     }
+
+    public float Calculate_L2(final Vector x) {
+        x.forEach((elem) -> sumOfModules += (float) elem*(float) elem);
+        return (float)Math.sqrt(sumOfModules);
+    }
 }
