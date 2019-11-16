@@ -87,4 +87,31 @@ public class TestMetrics {
         float metricL3 = new VectorMetric().Calculate_L3(v);
         assertEquals(4.4416330599643f, metricL3, 0.0001);
     }
+
+    @Test
+    public void canCalculateMetricOneDimensionalVector_L4() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(-2.0f);
+        float metricL4 = new VectorMetric().Calculate_L4(v);
+        assertEquals(2.0f, metricL4, 0.0001);
+    }
+
+    @Test
+    public void canCalculateMetricTwoDimensionalVector_L4() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(-2.0f);
+        v.add(1.0f);
+        float metricL4 = new VectorMetric().Calculate_L4(v);
+        assertEquals(2.0305431848689f, metricL4, 0.0001);
+    }
+
+    @Test
+    public void canCalculateMetricThreeDimensionalVector_L4() {
+        Vector<Float> v = new Vector<Float>();
+        v.add(-2.0f);
+        v.add(-2.0f);
+        v.add(-2.1f);
+        float metricL4 = new VectorMetric().Calculate_L4(v);
+        assertEquals(2.678195865012f, metricL4, 0.0001);
+    }
 }
