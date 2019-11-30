@@ -72,11 +72,10 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
 1. Все модули должны собраться и запуститься тесты. Стоит обратить внимание на папку с примером `korniakov-kirill-lab2`, в которой находится требуемая структура проекта, в том числе модуль `ViewModel` и тесты на него.
 
 1. Затем стоит сгенерировать проект для IDEA, и открыть его. Внимание: этот шаг возможно уничтожит ваш собственный проект IDEA (папка `.idea`), но он вам и не нужен.
-```bash
-    $ gradle clean cleanIdea cleanIdeaWorkspace
-    $ gradle idea
-```
-
+  ```bash
+      $ gradle clean cleanIdea cleanIdeaWorkspace
+      $ gradle idea
+  ```
 1. Теперь можно запустить IDEA и открыть проект, который был сгенерирован Gradle в директории `agile-course-practice` (файл `code.ipr`). __Внимание__: желательно именно генерировать проект и после открывать (не импортировать) его в IDEA. Теоретически, IDEA должна сама прожевывать Gradle-скрипты, но почему-то у нее это получается не до конца. Хотя в 2019 году вроде это уже начало работать по-нормальному.
 
 1. Все что осталось — это убедиться, что из IDEA вы можете запускать тесты и GUI-приложение. Для этого в браузере проекта (левая часть окна IDEA) найдите папку `korniakov-kirill-lab2` и раскройте ее. Там будет три подпроекта.
@@ -93,9 +92,9 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
 
 Предполагается, что слой `Model` у вас уже готов. Там содержится главный класс и тесты на него. Мы, таким образом, сосредоточимся на реализации паттерна MVVM. Высокоуровневая последовательность шагов следующая:
 
-  1. Создать новый проект `View` и спроектировать в нем GUI, используя технологию JavaFX и дизайнер Scene Builder. На этом этапе не нужно привязывать форму к вашим классам.
-  1. Создать новый проект `ViewModel`, являющийся моделью созданного выше GUI. Его разработка должна вестись по TDD.
-  1. Вернуться к `View`, сделать так, чтобы класс использовал `ViewModel`, настроить соответствующим образом привязку графических компонентов к полям класса.
+1. Создать новый проект `View` и спроектировать в нем GUI, используя технологию JavaFX и дизайнер Scene Builder. На этом этапе не нужно привязывать форму к вашим классам.
+1. Создать новый проект `ViewModel`, являющийся моделью созданного выше GUI. Его разработка должна вестись по TDD.
+1. Вернуться к `View`, сделать так, чтобы класс использовал `ViewModel`, настроить соответствующим образом привязку графических компонентов к полям класса.
 
 #### Детальные инструкции
 
@@ -103,53 +102,53 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
 
 Первым делом предлагается сверстать графическую форму в IDEA. Мы делаем это вперед `ViewModel` только затем, чтобы продумать интерфейс и логику взаимодействия с пользователем. Чтобы создать пустой проект, необходимо выполнить следующие шаги:
 
-  1. Создать директорию `View` в своей подпапке.
+1. Создать директорию `View` в своей подпапке.
 
-  1. Создать набор вложенных директорий для исходников, подобно тому, как это сделано в вашей `Model` и проекте-примере:
-```
-    code/korniakov-kirill-lab2/View/src/main/java/ru/unn/agile/ComplexNumber/view/
-    code/korniakov-kirill-lab2/View/src/test/java/ru/unn/agile/ComplexNumber/view/
-```
+1. Создать набор вложенных директорий для исходников, подобно тому, как это сделано в вашей `Model` и проекте-примере:
+    ```
+        code/korniakov-kirill-lab2/View/src/main/java/ru/unn/agile/ComplexNumber/view/
+        code/korniakov-kirill-lab2/View/src/test/java/ru/unn/agile/ComplexNumber/view/
+    ```
 
   1. Положить в вашу папку `View` файл `build.gradle` следующего примерного содержания:
-```groovy
-    plugins {
-      id 'application'
-      id 'org.openjfx.javafxplugin' version '0.0.8'
+    ```groovy
+        plugins {
+          id 'application'
+          id 'org.openjfx.javafxplugin' version '0.0.8'
+        }
+
+        apply plugin: 'application'
+        mainClassName = 'ru.unn.agile.ComplexNumber.view.Main'
+
+        javafx {
+            version = "11.0.2"
+            modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.base', 'javafx.fxml' ]
+        }
+
+        dependencies {
+            compile project(':korniakov-kirill-lab2-ViewModel')
     }
-
-    apply plugin: 'application'
-    mainClassName = 'ru.unn.agile.ComplexNumber.view.Main'
-
-    javafx {
-        version = "11.0.2"
-        modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.base', 'javafx.fxml' ]
-    }
-
-    dependencies {
-        compile project(':korniakov-kirill-lab2-ViewModel')
-}
-```
+    ```
 
   1. Затем необходимо добавить этот файл в общий проект. Снова идем в глобальный `settings.gradle` и добавляем две строки в вашей секции, "регистрирующие" директорию `View` и соответствующий ей проект.
 
   1. Теперь можно сгенерировать проект для IDEA, чтобы открыть его и приступить к проектированию формы. Выполняем следующую команду в консоли:
-```bash
-    $ cd agile-course-practice
-    $ gradle korniakov-kirill-lab2-View:idea # change the project name to yours
-```
+    ```bash
+        $ cd agile-course-practice
+        $ gradle korniakov-kirill-lab2-View:idea # change the project name to yours
+    ```
 
   1. Сгенерированный проект можно снова открыть в IDEA. Либо, если IDEA оставалась открытой, среда сама заметит изменения в файлах проекта и предложит перезагрузить проект. Нужно просто согласиться. Как результат, вы должны увидеть в своей папке уже два подпроекта: `Model` и `View`.
   1. Теперь следует добавить пустую форму:
         - В проекте `View` внутри папки `src` создайте папку `resources`, внутри которой воссоздайте используемую структуру папок для классов (в проекте-примере это `ru/unn/agile/ComplexNumber/view`).
         - По аналогии с примером, добавьте `Main.java`, `<Insert-your-project-name>.java` внутрь `src/main/java/...`, FXML файл с разметкой в `src/main/resources/...`. Можно воспользоваться шаблоном разметки ниже, где в `id` контроллера укажите полное имя своего класса.
- ```xml
- <?xml version="1.0" encoding="UTF-8"?>
+    ```xml
+    <?xml version="1.0" encoding="UTF-8"?>
 
- <?import javafx.scene.layout.*?>
- <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.ComplexNumber.view.Calculator">
- </AnchorPane>
- ```
+    <?import javafx.scene.layout.*?>
+    <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.ComplexNumber.view.Calculator">
+    </AnchorPane>
+    ```
         - После этого файл разметки можно будет открыть в Scene Builder из IDEA (ПКМ на FXML файле->Open In SceneBuilder) или запустить Scene Builder самостоятельно и открыть в нем нужный файл.
 
   1. Процесс дизайна формы с JavaFX интуитивно понятен, вот несколько статей по теме в помощь:
@@ -174,25 +173,25 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
   1. Аналогично тому, как создавались подпапки `Model` и `View`, нужно создать директорию `ViewModel`.
   1. В ней снова следует создать вложенную структуру папок для Java-исходников и тестов, полностью аналогично тому, как это сделано в директории `Model`. Единственное отличие, что имя Java пакета должно быть `viewmodel`, то есть полное имя выглядит примерно следующим образом: `package ru.unn.agile.ComplexNumber.viewmodel;`.
   1. Затем следует создать `build.gradle` файл, и положить его в корень вашей директории `ViewModel`. Этот файл должен указывать системе сборки на исходники ваших классов и тестов, плюс указывать зависимость от вашего проекта `Model`. Вот примерный вид `build.gradle` файла:
-```groovy
-    plugins {
-      id 'org.openjfx.javafxplugin' version '0.0.8'
-    }
+    ```groovy
+        plugins {
+          id 'org.openjfx.javafxplugin' version '0.0.8'
+        }
 
-    javafx {
-        version = "11.0.2"
-        modules = [ 'javafx.base' ]
-    }
+        javafx {
+            version = "11.0.2"
+            modules = [ 'javafx.base' ]
+        }
 
-    dependencies {
-        compile project(':korniakov-kirill-lab2-Model')
-    }
-```
+        dependencies {
+            compile project(':korniakov-kirill-lab2-Model')
+        }
+    ```
   1. Следующим шагом следует добавить созданный подпроект в систему сборки. Для этого снова открываем общий `settings.gradle` файл добавлем еще две строки в вашей секции. Как результат, вы теперь можете сгенерировать проект IDEA:
-```bash
-$ cd agile-course-practice
-$ gradle korniakov-kirill-lab2-ViewModel:idea
-```
+    ```bash
+    $ cd agile-course-practice
+    $ gradle korniakov-kirill-lab2-ViewModel:idea
+    ```
   1. Теперь можно открыть проект в IDEA и начать разработку согласно TDD практике. Стоит завести во `ViewModel` строковые поля, соответствующие входным агрументам, и метке статуса. Первым тестом может быть проверка на то, что выводятся корректные значения по умолчанию (например пустые строки для входных аргументов). Затем можно проверить, что при некорректном вводе от пользователя (например пустой ввод), выводится сообщение об ошибке.
   1. После этого уже можно переходить к полноценной реализации логики взаимодействия с пользователем. Пишутся тесты на все типичные сценарии взаимодействия, после чего эта логика реализуется по `ViewModel`. Стоит обратить особое внимание на то, что на этом этапе нет никакой необходимости использовать вашу реальную `View`.
   1. В качестве отдельного упражнения можно реализовать логику активации/деактивации контролов в зависимости от того, является ли корректным ввод. За инструкциями следует обратиться к проекту-примеру.
@@ -203,11 +202,11 @@ $ gradle korniakov-kirill-lab2-ViewModel:idea
 Последним шагом следует связать `View` и `ViewModel`. Сделать это относительно просто:
 
   1. Первым делом нужно добавить зависимость `View` от `ViewModel`. Для этого открываем `build.gradle` в вашей директории `View` и добавляем информацию про зависимость:
-```groovy
-dependencies {
-    compile project(':korniakov-kirill-lab2-ViewModel')
-}
-```
+    ```groovy
+    dependencies {
+        compile project(':korniakov-kirill-lab2-ViewModel')
+    }
+    ```
 
   1. Затем перегенерируем IDEA проект (`gradle korniakov-kirill-lab2-View:idea`) и снова открываем его в IDE.
   1. Далее следует завести поле типа `ViewModel` в вашем классе формы.
@@ -217,11 +216,11 @@ dependencies {
         - В FXML файле разметки добавляем аттрибут с связью: `<Label text="${viewModel.result}" .../>`. Так же, чтобы JavaFX мог получить доступ из FXML к свойству в `ViewModel`, необходимо объявить соответствующий публичный метод в `ViewMode`l: `get<ExactPropertyName>()`, для StringProperty `result` должен быть метод `String getResult()`.
         - Это все, теперь текст лейбла будет автоматически обновлятся при каждом вычислении результата.
 
-*Замечания.*
+__Замечания__
 
-    - Scene Builder может не открывать FXML разметку с установленной `ViewModel`, чтобы это поправить, закомментирйуте на время изменения тег `define` во `View`. Не забудьте потом раскомментировать!
-    - Чтобы JavaFX нашёл нужную `ViewModel` для `View`, ее необходимо объявить в теге `define` FXML.
-    - Binding может быть "one-way" (при обновлении `ViewModel`, данные `View` обновляются автоматически) и "two-way" (данные будут так же обновляться в `ViewModel` при изменении из в `View`, что например актуально для `TextField`), подробнее [здесь][msdnBinding]. На настоящий момент FXML не поддерживает "two-way" binding, его нужно установить вручную (при помощи функции `bindBidirectional()`, подробнее в `Calculator.java`).
+- Scene Builder может не открывать FXML разметку с установленной `ViewModel`, чтобы это поправить, закомментирйуте на время изменения тег `define` во `View`. Не забудьте потом раскомментировать!
+- Чтобы JavaFX нашёл нужную `ViewModel` для `View`, ее необходимо объявить в теге `define` FXML.
+- Binding может быть "one-way" (при обновлении `ViewModel`, данные `View` обновляются автоматически) и "two-way" (данные будут так же обновляться в `ViewModel` при изменении из в `View`, что например актуально для `TextField`), подробнее [здесь][msdnBinding]. На настоящий момент FXML не поддерживает "two-way" binding, его нужно установить вручную (при помощи функции `bindBidirectional()`, подробнее в `Calculator.java`).
 
 ## Заключение
 
