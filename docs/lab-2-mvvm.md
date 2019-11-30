@@ -58,17 +58,17 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
 Данная лабораторная работа потребует более серьезных усилий, поэтому сперва необходимо убедиться, что все окружение настроено правильно.
 
 1. Первым делом стоит получить последние коды из репозитория (стоит делать это всякий раз перед началом выполнения лабораторной работы).
-  ```bash
-      $ cd agile-course-practice
-      $ git fetch upstream
-      $ git checkout master
-      $ git rebase upstream/master
-      $ git checkout -b lab2-mvvm-SOMETHING
-  ```
+    ```bash
+        $ cd agile-course-practice
+        $ git fetch upstream
+        $ git checkout master
+        $ git rebase upstream/master
+        $ git checkout -b lab2-mvvm-SOMETHING
+    ```
 1. После этого стоит убедиться, что все компилируется и работает:
-  ```bash
-      $ gradle check
-  ```
+    ```bash
+        $ gradle check
+    ```
 1. Все модули должны собраться и запуститься тесты. Стоит обратить внимание на папку с примером `korniakov-kirill-lab2`, в которой находится требуемая структура проекта, в том числе модуль `ViewModel` и тесты на него.
 
 1. Затем стоит сгенерировать проект для IDEA, и открыть его. Внимание: этот шаг возможно уничтожит ваш собственный проект IDEA (папка `.idea`), но он вам и не нужен.
