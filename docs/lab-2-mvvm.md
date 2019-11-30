@@ -143,11 +143,11 @@ $ <PATH_TO_JAVAFX>/javafx-sdk-11.0.2/lib
         - В проекте `View` внутри папки `src` создайте папку `resources`, внутри которой воссоздайте используемую структуру папок для классов (в проекте-примере это `ru/unn/agile/ComplexNumber/view`).
         - По аналогии с примером, добавьте `Main.java`, `<Insert-your-project-name>.java` внутрь `src/main/java/...`, FXML файл с разметкой в `src/main/resources/...`. Можно воспользоваться шаблоном разметки ниже, где в `id` контроллера укажите полное имя своего класса.
     ```xml
-    <?xml version="1.0" encoding="UTF-8"?>
+        <?xml version="1.0" encoding="UTF-8"?>
 
-    <?import javafx.scene.layout.*?>
-    <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.ComplexNumber.view.Calculator">
-    </AnchorPane>
+        <?import javafx.scene.layout.*?>
+        <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.ComplexNumber.view.Calculator">
+        </AnchorPane>
     ```
         - После этого файл разметки можно будет открыть в Scene Builder из IDEA (ПКМ на FXML файле->Open In SceneBuilder) или запустить Scene Builder самостоятельно и открыть в нем нужный файл.
 
