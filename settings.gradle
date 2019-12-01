@@ -82,8 +82,6 @@ project(":code/deposit-calculator").name = "deposit-calculator-Model"
 include "code/kochetova-dasha-lab1-matrix"
 project(":code/kochetova-dasha-lab1-matrix").name = "kochetova-dasha-lab1-matrix"
 // Красильников Михаил
-include "code/salary-calculator"
-project(":code/salary-calculator").name = "salary-calculator"
 // Краснов Александр
 // Куликов Александр
 // Кулыгина Юлия
