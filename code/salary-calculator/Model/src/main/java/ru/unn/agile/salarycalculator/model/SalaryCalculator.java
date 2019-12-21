@@ -129,6 +129,4 @@ public class SalaryCalculator {
     private boolean isEmployeeWorkedMoreThanNormalHoursPerDay() {
         return this.getWorkedHoursPerMonth() > this.getDefaultSumOfWorkedHours();
     }
-
-
 }

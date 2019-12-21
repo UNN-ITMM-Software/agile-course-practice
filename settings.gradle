@@ -117,9 +117,13 @@ include "code/matrix/view"
 project(":code/matrix/view").name = "matrix-view"
 include "code/matrix/viewmodel"
 project(":code/matrix/viewmodel").name = "matrix-viewmodel"
-// Красильников Михаил
-include "code/salary-calculator"
-project(":code/salary-calculator").name = "salary-calculator"
+// Salary-calculator
+include "code/salary-calculator/Model"
+project(":code/salary-calculator/Model").name = "salary-calculator-Model"
+include "code/salary-calculator/View"
+project(":code/salary-calculator/View").name = "salary-calculator-View"
+include "code/salary-calculator/ViewModel"
+project(":code/salary-calculator/ViewModel").name = "salary-calculator-ViewModel"
 // Краснов Александр
 // Куликов Александр
 // complex-number-calculator

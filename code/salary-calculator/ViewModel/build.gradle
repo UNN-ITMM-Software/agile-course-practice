@@ -1,0 +1,3 @@
+dependencies {
+    compile project(':salary-calculator-Model')
+}
