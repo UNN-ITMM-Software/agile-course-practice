@@ -9,11 +9,11 @@ import static junit.framework.TestCase.assertNotNull;
 import static org.junit.Assert.*;
 
 public class TextLoggerTests {
-    TextLogger textLogger;
+    private TextLogger textLogger;
 
     @Before
     public void setUp() {
-        textLogger = new TextLogger();
+        textLogger = new TextLogger("salaryWorkLog.txt");
     }
 
     @Test
@@ -38,7 +38,7 @@ public class TextLoggerTests {
 
         List<String> actualMessages = textLogger.getLog();
 
-        assertEquals(0,actualMessages.size());
+        assertEquals(0, actualMessages.size());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class TextLoggerTests {
 
         List<String> actualMessages = textLogger.getLog();
         for (int i = 0; i < actualMessages.size(); i++) {
-            assertEquals(actualMessages.get(i), messages[i]);
+            assertEquals(messages[i], actualMessages.get(i));
         }
     }
 }

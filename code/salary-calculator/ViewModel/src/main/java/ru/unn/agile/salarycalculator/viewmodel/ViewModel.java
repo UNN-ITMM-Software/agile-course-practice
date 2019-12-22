@@ -21,7 +21,7 @@ public class ViewModel {
     private ILogger logger;
     private boolean isCalculateButtonEnabled;
 
-    public ViewModel(ILogger logger) {
+    public ViewModel(final ILogger logger) {
         this.logger = logger;
 
         salary = "";
@@ -90,7 +90,7 @@ public class ViewModel {
                 Integer.parseInt(countMonth), 1));
         result = getMoneyFormatInCashValue(calculator);
         status = Status.CASH;
-        logger.log("Calculate salary");
+        logger.log("Calculate salary: " + result);
     }
 
     private String getMoneyFormatInCashValue(final SalaryCalculator countPeriod) {
@@ -102,23 +102,31 @@ public class ViewModel {
     }
 
     public void setSalary(final String inSalary) {
+        if (this.salary.length() != inSalary.length()) {
+            logger.log("Set salary: " + inSalary);
+        }
         this.salary = inSalary;
-        logger.log("Set salary: " + inSalary);
     }
 
     public void setWorkedHours(final String inWorkedHours) {
+        if (this.workedHours.length() != inWorkedHours.length()) {
+            logger.log("Set worked hours: " + inWorkedHours);
+        }
         this.workedHours = inWorkedHours;
-        logger.log("Set worked hours: " + inWorkedHours);
     }
 
     public void setCountMonth(final String inCountMonth) {
+        if (this.countMonth.length() != inCountMonth.length()) {
+            logger.log("Set count month: " + inCountMonth);
+        }
         this.countMonth = inCountMonth;
-        logger.log("Set count month: " + inCountMonth);
     }
 
     public void setCountYear(final String inCountYear) {
+        if (this.countYear.length() != inCountYear.length()) {
+            logger.log("Set count year: " + inCountYear);
+        }
         this.countYear = inCountYear;
-        logger.log("Set count year: " + inCountYear);
     }
 
     public String getResult() {
@@ -132,8 +140,7 @@ public class ViewModel {
     public String getLogs() {
         List<String> logs = logger.getLog();
         String outputLog = "";
-        for (String log : logs)
-        {
+        for (String log : logs) {
             outputLog += (log + "\n");
         }
 

@@ -1,5 +1,6 @@
 package ru.unn.agile.salarycalculator.view;
 
+import ru.unn.agile.salarycalculator.viewmodel.ILogger;
 import ru.unn.agile.salarycalculator.viewmodel.ViewModel;
 import ru.unn.agile.salarycalculator.infrastructure.TextLogger;
 
@@ -33,7 +34,9 @@ public final class SalaryCalculatorView {
 
     public static void main(final String[] args) {
         JFrame frame = new JFrame("SalaryCalculatorView");
-        frame.setContentPane(new SalaryCalculatorView(new ViewModel(new TextLogger())).mainPanel);
+        ILogger logger = new TextLogger("salaryWorkLog.txt");
+        ViewModel viewModel = new ViewModel(logger);
+        frame.setContentPane(new SalaryCalculatorView(viewModel).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

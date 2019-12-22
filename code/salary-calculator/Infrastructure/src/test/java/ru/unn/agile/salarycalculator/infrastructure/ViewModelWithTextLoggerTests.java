@@ -6,7 +6,7 @@ import ru.unn.agile.salarycalculator.viewmodel.ViewModel;
 public class ViewModelWithTextLoggerTests extends ViewModelTests {
     @Override
     public void setUpEmptyExample() {
-        TextLogger realLogger = new TextLogger();
+        TextLogger realLogger = new TextLogger("salaryWorkLog.txt");
         ViewModel viewModel = new ViewModel(realLogger);
 
         viewModel.setSalary("10000");

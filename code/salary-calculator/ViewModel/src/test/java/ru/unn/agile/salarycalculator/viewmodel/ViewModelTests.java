@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
 public class ViewModelTests {
     private ViewModel viewModel;
 
-    public void setExternalViewModel(ViewModel viewModel) {
+    public void setExternalViewModel(final ViewModel viewModel) {
         this.viewModel = viewModel;
     }
 
