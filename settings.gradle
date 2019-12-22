@@ -124,6 +124,8 @@ include "code/salary-calculator/View"
 project(":code/salary-calculator/View").name = "salary-calculator-View"
 include "code/salary-calculator/ViewModel"
 project(":code/salary-calculator/ViewModel").name = "salary-calculator-ViewModel"
+include "code/salary-calculator/Infrastructure"
+project(":code/salary-calculator/Infrastructure").name = "salary-calculator-Infrastructure"
 // Краснов Александр
 // Куликов Александр
 // complex-number-calculator

@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':salary-calculator-ViewModel')
+    testCompile project(':salary-calculator-ViewModel').sourceSets.test.output
+}
