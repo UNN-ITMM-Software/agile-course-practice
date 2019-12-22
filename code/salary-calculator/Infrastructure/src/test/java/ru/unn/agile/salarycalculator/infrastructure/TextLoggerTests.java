@@ -30,7 +30,9 @@ public class TextLoggerTests {
         String testMessage = "Test message";
         textLogger.log(testMessage);
 
-        assertTrue(true);
+        List<String> actualMessages = textLogger.getLog();
+
+        assertEquals(testMessage, actualMessages.get(0));
     }
 
     @Test

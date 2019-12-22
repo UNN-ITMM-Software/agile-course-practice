@@ -2,13 +2,14 @@ package ru.unn.agile.salarycalculator.infrastructure;
 
 import ru.unn.agile.salarycalculator.viewmodel.legacy.ILogger;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 
 public class TextLogger implements ILogger {
-    List<String> logsList;
+    ArrayList<String> logsList;
 
     public TextLogger() {
+        logsList = new ArrayList<String>();
     }
 
     @Override
