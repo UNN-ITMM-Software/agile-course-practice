@@ -90,6 +90,7 @@ public class ViewModel {
                 Integer.parseInt(countMonth), 1));
         result = getMoneyFormatInCashValue(calculator);
         status = Status.CASH;
+        logger.log("Calculate salary");
     }
 
     private String getMoneyFormatInCashValue(final SalaryCalculator countPeriod) {
@@ -102,19 +103,22 @@ public class ViewModel {
 
     public void setSalary(final String inSalary) {
         this.salary = inSalary;
+        logger.log("Set salary: " + Integer.parseInt(inSalary));
     }
-
 
     public void setWorkedHours(final String inWorkedHours) {
         this.workedHours = inWorkedHours;
+        logger.log("Set worked hours: " + Integer.parseInt(inWorkedHours));
     }
 
     public void setCountMonth(final String inCountMonth) {
         this.countMonth = inCountMonth;
+        logger.log("Set count month: " + Integer.parseInt(inCountMonth));
     }
 
     public void setCountYear(final String inCountYear) {
         this.countYear = inCountYear;
+        logger.log("Set count year: " + Integer.parseInt(inCountYear));
     }
 
     public String getResult() {

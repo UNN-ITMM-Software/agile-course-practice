@@ -27,6 +27,8 @@ public final class SalaryCalculatorView {
         backBind();
         salaryCalculatorActionListener();
         salaryCalculatorKeyAdapter();
+
+        textAreaLogs.setText("Logs will be here");
     }
 
     public static void main(final String[] args) {
