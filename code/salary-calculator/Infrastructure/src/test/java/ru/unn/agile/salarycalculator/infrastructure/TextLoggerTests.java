@@ -32,6 +32,16 @@ public class TextLoggerTests {
     }
 
     @Test
+    public void cantWriteZeroLogMessage() {
+        String testMessage = "";
+        textLogger.log(testMessage);
+
+        List<String> actualMessages = textLogger.getLog();
+
+        assertEquals(0,actualMessages.size());
+    }
+
+    @Test
     public void canWriteSeveralLogMessage() {
         String[] messages = {"Test message 1", "Test message 2"};
 

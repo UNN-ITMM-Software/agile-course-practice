@@ -14,7 +14,9 @@ public class TextLogger implements ILogger {
 
     @Override
     public void log(final String s) {
-        logsList.add(s);
+        if (!s.isEmpty()) {
+            logsList.add(s);
+        }
     }
 
     @Override

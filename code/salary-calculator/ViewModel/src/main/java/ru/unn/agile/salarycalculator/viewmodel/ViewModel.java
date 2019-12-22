@@ -103,22 +103,22 @@ public class ViewModel {
 
     public void setSalary(final String inSalary) {
         this.salary = inSalary;
-        logger.log("Set salary: " + Integer.parseInt(inSalary));
+        logger.log("Set salary: " + inSalary);
     }
 
     public void setWorkedHours(final String inWorkedHours) {
         this.workedHours = inWorkedHours;
-        logger.log("Set worked hours: " + Integer.parseInt(inWorkedHours));
+        logger.log("Set worked hours: " + inWorkedHours);
     }
 
     public void setCountMonth(final String inCountMonth) {
         this.countMonth = inCountMonth;
-        logger.log("Set count month: " + Integer.parseInt(inCountMonth));
+        logger.log("Set count month: " + inCountMonth);
     }
 
     public void setCountYear(final String inCountYear) {
         this.countYear = inCountYear;
-        logger.log("Set count year: " + Integer.parseInt(inCountYear));
+        logger.log("Set count year: " + inCountYear);
     }
 
     public String getResult() {
