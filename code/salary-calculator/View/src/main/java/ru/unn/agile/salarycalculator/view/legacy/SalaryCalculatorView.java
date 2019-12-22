@@ -15,6 +15,7 @@ public final class SalaryCalculatorView {
     private JButton calculateButton;
     private JLabel lbStatus;
     private JTextField txtCountMonth;
+    private JTextArea textAreaLogs;
     private ViewModel viewModel;
 
     private SalaryCalculatorView() {
@@ -46,6 +47,7 @@ public final class SalaryCalculatorView {
         calculateButton.setEnabled(viewModel.isCalculateButtonEnable());
         txtResult.setText(viewModel.getResult());
         lbStatus.setText(viewModel.getStatus());
+        textAreaLogs.setText(viewModel.getLogs());
     }
 
     private void salaryCalculatorActionListener() {

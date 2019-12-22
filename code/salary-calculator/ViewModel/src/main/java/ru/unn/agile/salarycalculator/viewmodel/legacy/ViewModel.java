@@ -17,6 +17,7 @@ public class ViewModel {
     private String countYear;
     private String result;
     private String status;
+    private String logs;
     private boolean isCalculateButtonEnabled;
 
     public ViewModel() {
@@ -25,6 +26,7 @@ public class ViewModel {
         countMonth = "";
         countYear = "";
         result = "";
+        logs = "";
         status = Status.COUNT_WAITING;
         isCalculateButtonEnabled = false;
     }
@@ -119,6 +121,10 @@ public class ViewModel {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getLogs() {
+        return logs;
     }
 
     private boolean isWorkedHoursCorrect() {
