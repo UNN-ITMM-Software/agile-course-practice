@@ -1,4 +1,4 @@
-package  ru.unn.agile.salarycalculator.viewmodel.legacy;
+package  ru.unn.agile.salarycalculator.viewmodel;
 
 import java.util.List;
 

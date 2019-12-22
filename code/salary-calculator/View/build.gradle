@@ -1,3 +1,4 @@
 dependencies {
     compile project(':salary-calculator-ViewModel')
+    compile project(':salary-calculator-Infrastructure')
 }

@@ -3,13 +3,9 @@ package ru.unn.agile.salarycalculator.infrastructure;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.List;
 
 import static junit.framework.TestCase.assertNotNull;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
 public class TextLoggerTests {
@@ -46,15 +42,5 @@ public class TextLoggerTests {
         for (int i = 0; i < actualMessages.size(); i++) {
             assertEquals(actualMessages.get(i), messages[i]);
         }
-    }
-
-    @Test
-    public void doesLogContainDateAndTime() {
-        String testMessage = "Test message";
-
-        textLogger.log(testMessage);
-
-        String message = textLogger.getLog().get(0);
-        assertEquals(message, "");
     }
 }

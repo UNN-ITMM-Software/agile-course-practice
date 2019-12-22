@@ -1,4 +1,4 @@
-package ru.unn.agile.salarycalculator.view.legacy;
+package ru.unn.agile.salarycalculator.view;
 
 import org.junit.Ignore;
 import org.junit.Test;

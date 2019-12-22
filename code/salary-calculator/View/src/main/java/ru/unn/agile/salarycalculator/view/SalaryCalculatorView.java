@@ -1,6 +1,7 @@
-package ru.unn.agile.salarycalculator.view.legacy;
+package ru.unn.agile.salarycalculator.view;
 
-import ru.unn.agile.salarycalculator.viewmodel.legacy.ViewModel;
+import ru.unn.agile.salarycalculator.viewmodel.ViewModel;
+import ru.unn.agile.salarycalculator.infrastructure.TextLogger;
 
 import javax.swing.*;
 import java.awt.event.KeyAdapter;
@@ -30,7 +31,7 @@ public final class SalaryCalculatorView {
 
     public static void main(final String[] args) {
         JFrame frame = new JFrame("SalaryCalculatorView");
-        frame.setContentPane(new SalaryCalculatorView(new ViewModel()).mainPanel);
+        frame.setContentPane(new SalaryCalculatorView(new ViewModel(new TextLogger())).mainPanel);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);

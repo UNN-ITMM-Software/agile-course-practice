@@ -1,6 +1,6 @@
 package ru.unn.agile.salarycalculator.infrastructure;
 
-import ru.unn.agile.salarycalculator.viewmodel.legacy.ILogger;
+import ru.unn.agile.salarycalculator.viewmodel.ILogger;
 
 import java.util.ArrayList;
 import java.util.List;

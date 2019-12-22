@@ -1,18 +1,23 @@
-package ru.unn.agile.salarycalculator.viewmodel.legacy;
+package ru.unn.agile.salarycalculator.viewmodel;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import ru.unn.agile.salarycalculator.viewmodel.legacy.ViewModel.Status;
+import ru.unn.agile.salarycalculator.viewmodel.ViewModel.Status;
 
 import static org.junit.Assert.*;
 
 public class ViewModelTests {
     private ViewModel viewModel;
 
+    public void setExternalViewModel(ViewModel viewModel) {
+        this.viewModel = viewModel;
+    }
+
     @Before
     public void setUpEmptyExample() {
-        viewModel = new ViewModel();
+        ILogger fakeLogger = new FakeTextLogger();
+        viewModel = new ViewModel(fakeLogger);
         viewModel.setSalary("10000");
         viewModel.setWorkedHours("154");
         viewModel.setCountMonth("10");
@@ -26,7 +31,8 @@ public class ViewModelTests {
 
     @Test
     public void checkStatusInBegin() {
-        viewModel = new ViewModel();
+        ILogger logger = new FakeTextLogger();
+        viewModel = new ViewModel(logger);
         assertEquals(Status.COUNT_WAITING, viewModel.getStatus());
     }
 

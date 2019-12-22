@@ -1,8 +1,9 @@
-package ru.unn.agile.salarycalculator.viewmodel.legacy;
+package ru.unn.agile.salarycalculator.viewmodel;
 
 import ru.unn.agile.salarycalculator.model.SalaryCalculator;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Locale;
 
 public class ViewModel {
@@ -17,16 +18,17 @@ public class ViewModel {
     private String countYear;
     private String result;
     private String status;
-    private String logs;
+    private ILogger logger;
     private boolean isCalculateButtonEnabled;
 
-    public ViewModel() {
+    public ViewModel(ILogger logger) {
+        this.logger = logger;
+
         salary = "";
         workedHours = "";
         countMonth = "";
         countYear = "";
         result = "";
-        logs = "";
         status = Status.COUNT_WAITING;
         isCalculateButtonEnabled = false;
     }
@@ -124,7 +126,14 @@ public class ViewModel {
     }
 
     public String getLogs() {
-        return logs;
+        List<String> logs = logger.getLog();
+        String outputLog = "";
+        for (String log : logs)
+        {
+            outputLog += (log + "\n");
+        }
+
+        return outputLog;
     }
 
     private boolean isWorkedHoursCorrect() {
