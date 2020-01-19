@@ -170,6 +170,10 @@ public class ViewModel {
         status.set(Status.SUCCESS.toString());
     }
 
+    public List<String> getLog() {
+        return logger.getLogMessages();
+    }
+
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,

@@ -6,5 +6,5 @@ import java.util.List;
 public interface ILogger {
     void addLog(String message);
 
-    List<String> getLogMessages() throws IOException;
+    List<String> getLogMessages();
 }

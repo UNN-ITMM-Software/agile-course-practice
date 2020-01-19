@@ -202,6 +202,13 @@ public class ViewModelTest {
         viewModel = new ViewModel(new MockLogger());
     }
 
+    @Test
+    public void afterConstructorLogIsEmpty() {
+        var log = viewModel.getLog();
+        
+        assertEquals(0, log.size());
+    }
+
     private void setInputData() {
         viewModel.addFieldProperty().set("1");
         viewModel.findInsertFieldProperty().set("1");
