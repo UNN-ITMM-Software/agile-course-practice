@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewModel {
+    private ILogger logger;
+
     private final StringProperty addField = new SimpleStringProperty();
     private final StringProperty findInsertField = new SimpleStringProperty();
     private final StringProperty removeInsertField = new SimpleStringProperty();
@@ -45,7 +47,12 @@ public class ViewModel {
         return resultRemove;
     }
 
-    public ViewModel() {
+    public ViewModel(final ILogger logger) {
+        if (logger == null) {
+            throw new IllegalArgumentException("Invalid argument: logger is null");
+        }
+        this.logger = logger;
+
         addField.set("");
         findInsertField.set("");
         removeInsertField.set("");
