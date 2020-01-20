@@ -1,0 +1,17 @@
+// apply from:   rootDir.getAbsolutePath() + '/config/scripts/javafx.plugin'
+plugins {
+  id 'application'
+  id 'org.openjfx.javafxplugin' version '0.0.8'
+}
+
+apply plugin: 'application'
+mainClassName = 'ru.unn.agile.figuresvolumecalculator.view.Main'
+
+javafx {
+    version = "11.0.2"
+    modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.base', 'javafx.fxml' ]
+}
+
+dependencies {
+    compile project(':figures-volume-calculator-ViewModel')
+}

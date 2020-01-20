@@ -50,4 +50,61 @@ public final class FiguresVolumeCalculator {
     }
 
     private FiguresVolumeCalculator() { }
+
+    public enum TypeOfFunction {
+        PYRAMID_VOLUME("Pyramid volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.pyramidVolumeCalculate(x, y);
+                return vol.toString();
+            }
+        },
+
+        SPHERE_VOLUME("Sphere volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.sphereVolumeCalculate(x);
+                return vol.toString();
+            }
+        },
+
+        CYLINDER_VOLUME("Cylinder volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.cylinderVolumeCalculate(x, y);
+                return vol.toString();
+            }
+        },
+
+        CONE_VOLUME("Cone volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.coneVolumeCalculate(x, y);
+                return vol.toString();
+            }
+        },
+
+        PARALLELEPIPED_VOLUME("Parallelepiped volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.parallelepipedVolumeCalculate(x,y);
+                return vol.toString();
+            }
+        },
+
+        OCTAHEDRON_VOLUME("Octahedron volume") {
+            public String apply(final double x, final double y) {
+                Double vol = FiguresVolumeCalculator.octahedronVolumeCalculate(x);
+                return vol.toString();
+            }
+        };
+
+        private final String name;
+        TypeOfFunction(final String name) {
+            this.name = name;
+        }
+
+        @Override
+        public String toString() {
+            return name;
+        }
+
+        public abstract String apply(final double x, final double y);
+
+    }
 }
