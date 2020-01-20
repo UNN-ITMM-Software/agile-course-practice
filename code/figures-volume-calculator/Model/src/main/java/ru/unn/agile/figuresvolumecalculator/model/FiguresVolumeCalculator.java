@@ -82,7 +82,7 @@ public final class FiguresVolumeCalculator {
 
         PARALLELEPIPED_VOLUME("Parallelepiped volume") {
             public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.parallelepipedVolumeCalculate(x,y);
+                Double vol = FiguresVolumeCalculator.parallelepipedVolumeCalculate(x, y);
                 return vol.toString();
             }
         },
@@ -104,7 +104,7 @@ public final class FiguresVolumeCalculator {
             return name;
         }
 
-        public abstract String apply(final double x, final double y);
+        public abstract String apply(double x, double y);
 
     }
 }
