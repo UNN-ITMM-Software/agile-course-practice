@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" >
+    <fx:define>
+        <ViewModel fx:id="viewModel" />
+    </fx:define>
+    <children>
+        <VBox alignment="TOP_CENTER" layoutX="6.0" spacing="10.0">
+            <padding>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </padding>
+         <children>
+            <HBox>
+               <children>
+                  <Label minWidth="-Infinity" text="Square of base figure =  ">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </Label>
+                  <TextField fx:id="txtZ1Re" />
+                  <Separator prefWidth="200.0" visible="false" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label minWidth="-Infinity" text="Height = " />
+                  <TextField fx:id="txtZ2Re" />
+                  <Separator prefWidth="200.0" visible="false" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <ComboBox fx:id="cbOperation" items="${viewModel.operations}" prefHeight="39.0" prefWidth="267.0" />
+                  <Separator prefWidth="200.0" visible="false" />
+                  <Button fx:id="btnCalc" defaultButton="true" disable="${viewModel.calculationDisabled}" maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="39.0" prefWidth="216.0" text="Calculate" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <Label text="Result: " />
+                  <Label fx:id="lbResult" maxWidth="1.7976931348623157E308" text="${viewModel.result}" HBox.hgrow="ALWAYS" />
+                  <Separator prefWidth="200.0" visible="false" />
+                  <Label fx:id="lbStatus" maxWidth="1.7976931348623157E308" text="${viewModel.status}" HBox.hgrow="ALWAYS" />
+               </children>
+            </HBox>
+         </children>
+        </VBox>
+    </children>
+</AnchorPane>
