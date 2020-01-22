@@ -171,6 +171,8 @@ public class ViewModel {
         boolean answer = rbTree.remove(Integer.parseInt(removeInsertField.get()));
         resultRemove.set(Boolean.toString(answer));
         status.set(Status.SUCCESS.toString());
+        logger.addLog(LogPrefix.REMOVE_ELEMENT + "Value " + removeInsertField.get() + " " +
+                (answer ? "removed" : "not found") + " from  tree.");
     }
 
     public List<String> getLog() {

@@ -9,6 +9,7 @@ public interface ILogger {
 }
 
 final class LogPrefix {
-    public static final String ELEMENT_ADDED = "[Element added] ";
-    public static final String SEARCH_ELEMENT = "[Search element] ";
+    public static final String ELEMENT_ADDED = "Element added: ";
+    public static final String SEARCH_ELEMENT = "Search element: ";
+    public static final String REMOVE_ELEMENT = "Remove element: ";
 }
