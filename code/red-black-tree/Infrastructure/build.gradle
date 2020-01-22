@@ -1,3 +1,4 @@
 dependencies {
     compile project(':red-black-tree-ViewModel')
+    testCompile project(':red-black-tree-ViewModel').sourceSets.test.output
 }

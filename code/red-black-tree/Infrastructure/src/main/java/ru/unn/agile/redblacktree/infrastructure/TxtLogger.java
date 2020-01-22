@@ -23,7 +23,7 @@ public class TxtLogger implements ILogger {
     }
 
     @Override
-    public void addLog(String message) {
+    public void addLog(final String message) {
         final String formattedLog = timeNow() + " " + message;
         try {
             writer.write(formattedLog);

@@ -9,10 +9,6 @@ import static org.junit.Assert.*;
 public class ViewModelTest {
     private ViewModel viewModel;
 
-    protected void setViewModel(final ViewModel viewModel) {
-        this.viewModel = viewModel;
-    }
-
     @Before
     public void setUp() {
         viewModel = new ViewModel(new MockLogger());
@@ -21,6 +17,10 @@ public class ViewModelTest {
     @After
     public void tearDown() {
         viewModel = null;
+    }
+
+    protected void setViewModel(final ViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     private void setInputData() {
@@ -229,19 +229,6 @@ public class ViewModelTest {
     }
 
     @Test
-    public void onElementSearchingSearchElementLogWillBeCreated() {
-        viewModel.addFieldProperty().set("0");
-        viewModel.addElementToTree();
-
-        viewModel.findInsertFieldProperty().set("0");
-        viewModel.findElementInTree();
-        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
-
-        String matchPatter = ".*" + LogPrefix.SEARCH_ELEMENT + ".*";
-        assertTrue(logOutput.matches(matchPatter));
-    }
-
-    @Test
     public void onElementSearchingElementExistsFoundLog() {
         viewModel.addFieldProperty().set("0");
         viewModel.addElementToTree();
@@ -261,20 +248,6 @@ public class ViewModelTest {
         String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
 
         String matchPatter = ".*" + LogPrefix.SEARCH_ELEMENT + ".*" + "not found" + ".*";
-        assertTrue(logOutput.matches(matchPatter));
-    }
-
-    @Test
-    public void onElementRemovingRemoveLogWillBeCreated() {
-        viewModel.addFieldProperty().set("0");
-        viewModel.addElementToTree();
-
-        viewModel.removeInsertFieldProperty().set("0");
-        viewModel.removeElementFromTree();
-
-        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
-
-        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*";
         assertTrue(logOutput.matches(matchPatter));
     }
 
