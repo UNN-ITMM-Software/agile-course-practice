@@ -216,12 +216,48 @@ public class ViewModelTest {
     }
 
     @Test
-    public void onElementAddingNewAddElementLogWillBeCreated() {
+    public void onElementAddingAddElementLogWillBeCreated() {
         viewModel.addFieldProperty().set("0");
         viewModel.addElementToTree();
         String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
 
         String matchPatter = ".*" + LogPrefix.ELEMENT_ADDED + ".*";
+        assertTrue(logOutput.matches(matchPatter));
+    }
+
+    @Test
+    public void onElementSearchingSearchElementLogWillBeCreated() {
+        viewModel.addFieldProperty().set("0");
+        viewModel.addElementToTree();
+
+        viewModel.findInsertFieldProperty().set("0");
+        viewModel.findElementInTree();
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.SEARCH_ELEMENT + ".*";
+        assertTrue(logOutput.matches(matchPatter));
+    }
+
+    @Test
+    public void onElementSearchingElementExistsFoundLog() {
+        viewModel.addFieldProperty().set("0");
+        viewModel.addElementToTree();
+
+        viewModel.findInsertFieldProperty().set("0");
+        viewModel.findElementInTree();
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.SEARCH_ELEMENT + ".*" + "found" + ".*";
+        assertTrue(logOutput.matches(matchPatter));
+    }
+
+    @Test
+    public void onElementSearchingElementNotExistsNotFoundLog() {
+        viewModel.findInsertFieldProperty().set("0");
+        viewModel.findElementInTree();
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.SEARCH_ELEMENT + ".*" + "not found" + ".*";
         assertTrue(logOutput.matches(matchPatter));
     }
 }

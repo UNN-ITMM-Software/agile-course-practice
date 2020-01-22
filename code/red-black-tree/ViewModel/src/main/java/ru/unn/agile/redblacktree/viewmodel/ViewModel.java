@@ -160,6 +160,8 @@ public class ViewModel {
         boolean answer = rbTree.find(Integer.parseInt(findInsertField.get()));
         resultFind.set(Boolean.toString(answer));
         status.set(Status.SUCCESS.toString());
+        logger.addLog(LogPrefix.SEARCH_ELEMENT + "Value " + findInsertField.get() + " " +
+                (answer ? "found" : "not found") + " in  tree.");
     }
 
     public void removeElementFromTree() {
