@@ -22,7 +22,13 @@ public class TxtLogger implements ILogger {
 
     @Override
     public void addLog(String message) {
-
+        try {
+            writer.write(message);
+            writer.newLine();
+            writer.flush();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     @Override

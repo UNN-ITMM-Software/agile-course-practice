@@ -3,6 +3,10 @@ package ru.unn.agile.redblacktree.infrastructure;
 import org.junit.*;
 import org.junit.Test;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+
 import static org.junit.Assert.*;
 
 public class TxtLoggerTests {
@@ -17,5 +21,12 @@ public class TxtLoggerTests {
     @Test
     public void canCreateLogger() {
         assertNotNull(txtLogger);
+    }
+    
+    @Test
+    public void canWriteLogMessage() {
+        String testMessage = "Test message";
+
+        txtLogger.addLog(testMessage);
     }
 }
