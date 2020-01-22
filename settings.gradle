@@ -259,6 +259,8 @@ include "code/red-black-tree/View"
 project(":code/red-black-tree/View").name = "red-black-tree-View"
 include "code/red-black-tree/ViewModel"
 project(":code/red-black-tree/ViewModel").name = "red-black-tree-ViewModel"
+include "code/red-black-tree/Infrastructure"
+project(":code/red-black-tree/Infrastructure").name = "red-black-tree-Infrastructure"
 // Попков Кирилл
 include "code/range/Model"
 project(":code/range/Model").name = "range-Model"
