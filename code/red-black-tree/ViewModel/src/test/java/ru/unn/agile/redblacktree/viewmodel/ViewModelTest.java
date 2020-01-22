@@ -274,4 +274,29 @@ public class ViewModelTest {
         String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*";
         assertTrue(logOutput.matches(matchPatter));
     }
+
+    @Test
+    public void onElementRemovingElementExistsRemoveLogContainsRemoved() {
+        viewModel.addFieldProperty().set("0");
+        viewModel.addElementToTree();
+
+        viewModel.removeInsertFieldProperty().set("0");
+        viewModel.removeElementFromTree();
+
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "removed" + ".*" ;
+        assertTrue(logOutput.matches(matchPatter));
+    }
+
+    @Test
+    public void onElementRemovingElementNotExistsRemoveLogContainsNotFound() {
+        viewModel.removeInsertFieldProperty().set("0");
+        viewModel.removeElementFromTree();
+
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "not found" + ".*" ;
+        assertTrue(logOutput.matches(matchPatter));
+    }
 }

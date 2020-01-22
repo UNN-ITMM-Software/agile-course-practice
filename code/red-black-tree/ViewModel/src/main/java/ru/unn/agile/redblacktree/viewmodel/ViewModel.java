@@ -172,7 +172,7 @@ public class ViewModel {
         resultRemove.set(Boolean.toString(answer));
         status.set(Status.SUCCESS.toString());
         logger.addLog(LogPrefix.REMOVE_ELEMENT + "Value " + removeInsertField.get() + " " +
-                (answer ? "removed" : "not found") + " from  tree.");
+                (answer ? "removed from" : "not found in") + " tree.");
     }
 
     public List<String> getLog() {
