@@ -39,4 +39,13 @@ public class TxtLoggerTests {
     public void onDefaultLogMessagesEmpty() {
         assertEquals(txtLogger.getLogMessages().size(), 0);
     }
+
+    @Test
+    public void onGetAddedMessagesMessageIsTheSame() {
+        String testMessage = "Hello there";
+
+        txtLogger.addLog(testMessage);
+        var lastMessage = txtLogger.getLogMessages().get(txtLogger.getLogMessages().size() - 1);
+        assertEquals(lastMessage, testMessage);
+    }
 }
