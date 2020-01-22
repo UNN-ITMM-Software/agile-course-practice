@@ -48,4 +48,18 @@ public class TxtLoggerTests {
         var lastMessage = txtLogger.getLogMessages().get(txtLogger.getLogMessages().size() - 1);
         assertEquals(lastMessage, testMessage);
     }
+
+    @Test
+    public void canAddSeveralMessages() {
+        String[] messagesToWrite = {"Hello 1", "Hello second"};
+
+        txtLogger.addLog(messagesToWrite[0]);
+        txtLogger.addLog(messagesToWrite[1]);
+
+        var actualMessages = txtLogger.getLogMessages();
+
+        for (int i = 0; i < messagesToWrite.length; ++i) {
+            assertEquals(actualMessages.get(i), messagesToWrite[i]);
+        }
+    }
 }
