@@ -150,6 +150,7 @@ public class ViewModel {
         }
         rbTree.insert(Integer.parseInt(addField.get()));
         status.set(Status.SUCCESS.toString());
+        logger.addLog(LogPrefix.ELEMENT_ADDED + "Value " + addField.get() + " added to tree.");
     }
 
     public void findElementInTree() {

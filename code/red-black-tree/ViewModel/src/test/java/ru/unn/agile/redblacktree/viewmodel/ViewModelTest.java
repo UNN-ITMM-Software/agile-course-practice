@@ -20,6 +20,12 @@ public class ViewModelTest {
         viewModel = null;
     }
 
+    private void setInputData() {
+        viewModel.addFieldProperty().set("1");
+        viewModel.findInsertFieldProperty().set("1");
+        viewModel.removeInsertFieldProperty().set("1");
+    }
+
     @Test
     public void canSetDefaultValues() {
         assertEquals("", viewModel.addFieldProperty().get());
@@ -209,9 +215,13 @@ public class ViewModelTest {
         assertEquals(0, log.size());
     }
 
-    private void setInputData() {
-        viewModel.addFieldProperty().set("1");
-        viewModel.findInsertFieldProperty().set("1");
-        viewModel.removeInsertFieldProperty().set("1");
+    @Test
+    public void onElementAddingNewAddElementLogWillBeCreated() {
+        viewModel.addFieldProperty().set("0");
+        viewModel.addElementToTree();
+        String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
+
+        String matchPatter = ".*" + LogPrefix.ELEMENT_ADDED + ".*";
+        assertTrue(logOutput.matches(matchPatter));
     }
 }
