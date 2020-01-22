@@ -33,6 +33,19 @@ public class TxtLogger implements ILogger {
 
     @Override
     public List<String> getLogMessages() {
-        return null;
+        BufferedReader reader;
+        ArrayList<String> logMessages = new ArrayList<>();
+
+        try {
+            reader = new BufferedReader(new FileReader(fileName));
+
+            String line;
+            while ((line = reader.readLine()) != null) {
+                logMessages.add(line);
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return logMessages;
     }
 }

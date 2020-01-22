@@ -22,11 +22,21 @@ public class TxtLoggerTests {
     public void canCreateLogger() {
         assertNotNull(txtLogger);
     }
-    
+
     @Test
     public void canWriteLogMessage() {
         String testMessage = "Test message";
 
         txtLogger.addLog(testMessage);
+    }
+
+    @Test
+    public void canGetLogMessages() {
+        assertNotNull(txtLogger.getLogMessages());
+    }
+
+    @Test
+    public void onDefaultLogMessagesEmpty() {
+        assertEquals(txtLogger.getLogMessages().size(), 0);
     }
 }
