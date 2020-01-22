@@ -42,11 +42,13 @@ public class TxtLoggerTests {
 
     @Test
     public void onGetAddedMessagesMessageIsTheSame() {
-        String testMessage = "Hello there";
+        final String testMessage = "Hello there";
 
         txtLogger.addLog(testMessage);
         var lastMessage = txtLogger.getLogMessages().get(txtLogger.getLogMessages().size() - 1);
-        assertEquals(lastMessage, testMessage);
+
+        final String pattern = ".*" + testMessage + ".*";
+        assertTrue(lastMessage.matches(pattern));
     }
 
     @Test
@@ -59,7 +61,8 @@ public class TxtLoggerTests {
         var actualMessages = txtLogger.getLogMessages();
 
         for (int i = 0; i < messagesToWrite.length; ++i) {
-            assertEquals(actualMessages.get(i), messagesToWrite[i]);
+            final String pattern = ".*" + messagesToWrite[i] + ".*";
+            assertTrue(actualMessages.get(i).matches(pattern));
         }
     }
 }

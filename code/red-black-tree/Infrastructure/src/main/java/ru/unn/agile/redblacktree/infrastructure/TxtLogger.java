@@ -3,7 +3,9 @@ package ru.unn.agile.redblacktree.infrastructure;
 import ru.unn.agile.redblacktree.viewmodel.ILogger;
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class TxtLogger implements ILogger {
@@ -22,8 +24,9 @@ public class TxtLogger implements ILogger {
 
     @Override
     public void addLog(String message) {
+        final String formattedLog = timeNow() + " " + message;
         try {
-            writer.write(message);
+            writer.write(formattedLog);
             writer.newLine();
             writer.flush();
         } catch (Exception e) {
@@ -48,4 +51,11 @@ public class TxtLogger implements ILogger {
         }
         return logMessages;
     }
+
+    private static String timeNow() {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat dataFormat = new SimpleDateFormat();
+        return dataFormat.format(cal.getTime());
+    }
+
 }
