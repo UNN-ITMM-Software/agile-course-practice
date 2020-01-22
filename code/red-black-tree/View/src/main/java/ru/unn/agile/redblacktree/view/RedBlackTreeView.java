@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 import ru.unn.agile.redblacktree.viewmodel.ViewModel;
+import ru.unn.agile.redblacktree.infrastructure.TxtLogger;
 
 public class RedBlackTreeView {
     @FXML
@@ -32,7 +33,7 @@ public class RedBlackTreeView {
 
     @FXML
     void initialize() {
-
+        viewModel = new ViewModel(new TxtLogger("./red-black-tree.log"));
         txtAddField.textProperty().bindBidirectional(viewModel.addFieldProperty());
         txtFindField.textProperty().bindBidirectional(viewModel.findInsertFieldProperty());
         txtRemoveField.textProperty().bindBidirectional(viewModel.removeInsertFieldProperty());

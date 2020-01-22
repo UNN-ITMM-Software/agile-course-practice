@@ -9,9 +9,6 @@
 
 <?import ru.unn.agile.redblacktree.viewmodel.ViewModel?>
 <AnchorPane prefHeight="231.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.redblacktree.view.RedBlackTreeView">
-   <fx:define>
-      <ViewModel fx:id="viewModel" />
-   </fx:define>
    <Pane layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="427.0">
       <ButtonBar layoutX="39.0" layoutY="29.0" prefHeight="40.0" prefWidth="350.0">
          <buttons>

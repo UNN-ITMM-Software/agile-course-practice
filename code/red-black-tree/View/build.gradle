@@ -13,4 +13,5 @@ javafx {
 
 dependencies {
     compile project(':red-black-tree-ViewModel')
+    compile project(':red-black-tree-Infrastructure')
 }
