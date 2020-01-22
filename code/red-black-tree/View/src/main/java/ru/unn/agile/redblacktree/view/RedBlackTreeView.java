@@ -30,6 +30,8 @@ public class RedBlackTreeView {
     private Label txtResultFind;
     @FXML
     private Label txtResultRemove;
+    @FXML
+    private Label txtLog;
 
     @FXML
     void initialize() {
@@ -40,6 +42,7 @@ public class RedBlackTreeView {
 
         txtResultFind.textProperty().bindBidirectional(viewModel.resultFindProperty());
         txtResultRemove.textProperty().bindBidirectional(viewModel.resultRemoveProperty());
+        txtLog.textProperty().bindBidirectional(viewModel.logTextProperty());
 
         btnAdd.setOnAction(new EventHandler<ActionEvent>() {
             @Override

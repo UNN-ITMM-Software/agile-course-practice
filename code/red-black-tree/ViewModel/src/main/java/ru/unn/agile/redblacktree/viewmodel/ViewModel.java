@@ -28,6 +28,7 @@ public class ViewModel {
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
     private final StringProperty resultFind = new SimpleStringProperty();
     private final StringProperty resultRemove = new SimpleStringProperty();
+    private final StringProperty logText = new SimpleStringProperty();
     private final StringProperty status = new SimpleStringProperty();
 
     public BooleanProperty addElementToTreeDisabledProperty() {
@@ -46,6 +47,13 @@ public class ViewModel {
     public StringProperty resultRemoveProperty() {
         return resultRemove;
     }
+    public StringProperty logTextProperty() {
+        return logText;
+    }
+
+    private void updateLogs() {
+        logText.set(String.join("\n", logger.getLogMessages()));
+    }
 
     public ViewModel(final ILogger logger) {
         if (logger == null) {
@@ -58,6 +66,7 @@ public class ViewModel {
         removeInsertField.set("");
         resultFind.set("");
         resultRemove.set("");
+        logText.set("");
 
         status.set(Status.WAITING.toString());
 
@@ -151,6 +160,7 @@ public class ViewModel {
         rbTree.insert(Integer.parseInt(addField.get()));
         status.set(Status.SUCCESS.toString());
         logger.addLog(LogPrefix.ELEMENT_ADDED + "Value " + addField.get() + " added to tree.");
+        updateLogs();
     }
 
     public void findElementInTree() {
@@ -162,6 +172,7 @@ public class ViewModel {
         status.set(Status.SUCCESS.toString());
         logger.addLog(LogPrefix.SEARCH_ELEMENT + "Value " + findInsertField.get() + " " +
                 (answer ? "found" : "not found") + " in  tree.");
+        updateLogs();
     }
 
     public void removeElementFromTree() {
@@ -173,6 +184,7 @@ public class ViewModel {
         status.set(Status.SUCCESS.toString());
         logger.addLog(LogPrefix.REMOVE_ELEMENT + "Value " + removeInsertField.get() + " " +
                 (answer ? "removed from" : "not found in") + " tree.");
+        updateLogs();
     }
 
     public List<String> getLog() {

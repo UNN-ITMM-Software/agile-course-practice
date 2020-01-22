@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<?import ru.unn.agile.binarytree.viewmodel.*?>
-<AnchorPane maxHeight="200.0" maxWidth="400.0" minHeight="200.0" minWidth="200.0" prefHeight="200.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.binarytree.view.BinaryTree">
+<AnchorPane maxHeight="359.0" maxWidth="400.0" minHeight="200.0" minWidth="200.0" prefHeight="359.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.binarytree.view.BinaryTree">
     <fx:define>
         <ViewModel fx:id="viewModel" />
     </fx:define>
@@ -23,4 +24,5 @@
     <Label text="Status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="55.0" />
     <Label text="Status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="120.0" />
     <Label text="Status:" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="175.0" />
+   <Label alignment="TOP_LEFT" layoutX="22.0" layoutY="212.0" prefHeight="132.0" prefWidth="363.0" />
 </AnchorPane>

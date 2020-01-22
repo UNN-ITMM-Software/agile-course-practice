@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 
 <?import ru.unn.agile.redblacktree.viewmodel.ViewModel?>
-<AnchorPane prefHeight="231.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.redblacktree.view.RedBlackTreeView">
+<AnchorPane prefHeight="400.0" prefWidth="467.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.redblacktree.view.RedBlackTreeView">
    <Pane layoutX="14.0" layoutY="14.0" prefHeight="230.0" prefWidth="427.0">
       <ButtonBar layoutX="39.0" layoutY="29.0" prefHeight="40.0" prefWidth="350.0">
          <buttons>
@@ -32,5 +32,6 @@
       </ButtonBar>
       <Label layoutX="192.0" layoutY="90.0" prefHeight="16.0" prefWidth="66.0" text="   Insert" />
       <Label layoutX="304.0" layoutY="90.0" prefHeight="16.0" prefWidth="66.0" text="   Result" />
+      <Label fx:id="txtLog" layoutX="50" layoutY="220.0" prefHeight="150.0" prefWidth="350.0"/>
    </Pane>
 </AnchorPane>
