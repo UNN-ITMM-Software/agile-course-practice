@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class TxtLoggerTests {
-    private static final String FILENAME = "./TxtLogger_Tests.log";
+    private static final String FILENAME = "./RedBlackTree-TxtLogger-Tests.log";
     private TxtLogger txtLogger;
 
     @Before

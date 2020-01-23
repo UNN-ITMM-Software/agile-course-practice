@@ -170,8 +170,8 @@ public class ViewModel {
         boolean answer = rbTree.find(Integer.parseInt(findInsertField.get()));
         resultFind.set(Boolean.toString(answer));
         status.set(Status.SUCCESS.toString());
-        logger.addLog(LogPrefix.SEARCH_ELEMENT + "Value " + findInsertField.get() + " " +
-                (answer ? "found" : "not found") + " in  tree.");
+        logger.addLog(LogPrefix.SEARCH_ELEMENT + "Value " + findInsertField.get() + " "
+                + (answer ? "found" : "not found") + " in  tree.");
         updateLogs();
     }
 
@@ -182,8 +182,8 @@ public class ViewModel {
         boolean answer = rbTree.remove(Integer.parseInt(removeInsertField.get()));
         resultRemove.set(Boolean.toString(answer));
         status.set(Status.SUCCESS.toString());
-        logger.addLog(LogPrefix.REMOVE_ELEMENT + "Value " + removeInsertField.get() + " " +
-                (answer ? "removed from" : "not found in") + " tree.");
+        logger.addLog(LogPrefix.REMOVE_ELEMENT + "Value " + removeInsertField.get() + " "
+                + (answer ? "removed from" : "not found in") + " tree.");
         updateLogs();
     }
 

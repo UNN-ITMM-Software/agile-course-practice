@@ -6,7 +6,7 @@ import ru.unn.agile.redblacktree.viewmodel.ViewModelTest;
 public class TxtLoggerTestsWithViewModel extends ViewModelTest {
     @Override
     public void setUp() {
-        TxtLogger realLogger = new TxtLogger("TxtLogger.log");
+        TxtLogger realLogger = new TxtLogger("./Red-Black-Tree-TxtLogger.log");
         super.setViewModel(new ViewModel((realLogger)));
     }
 }

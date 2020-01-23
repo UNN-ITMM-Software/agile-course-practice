@@ -214,7 +214,7 @@ public class ViewModelTest {
     @Test
     public void afterConstructorLogIsEmpty() {
         var log = viewModel.getLog();
-        
+
         assertEquals(0, log.size());
     }
 
@@ -261,7 +261,7 @@ public class ViewModelTest {
 
         String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
 
-        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "removed" + ".*" ;
+        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "removed" + ".*";
         assertTrue(logOutput.matches(matchPatter));
     }
 
@@ -272,7 +272,7 @@ public class ViewModelTest {
 
         String logOutput = viewModel.getLog().get(viewModel.getLog().size() - 1);
 
-        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "not found" + ".*" ;
+        String matchPatter = ".*" + LogPrefix.REMOVE_ELEMENT + ".*" + "not found" + ".*";
         assertTrue(logOutput.matches(matchPatter));
     }
 }
