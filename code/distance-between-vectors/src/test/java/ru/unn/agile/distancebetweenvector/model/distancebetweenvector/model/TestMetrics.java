@@ -152,7 +152,44 @@ public class TestMetrics {
         float metricL4 = new VectorMetric().calculateL4(v);
         assertEquals(expectedL4, metricL4, comparisonDELTA);
     }
+
+    @Test
+    public void canCalculateMetricOneDimensionalVectorLinf() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = -2.0f;
+        final float expectedLinf = -2.0f;
+        v.add(coordX);
+        float metricLinf = new VectorMetric().calculateLinf(v);
+        assertEquals(expectedLinf, metricLinf, comparisonDELTA);
+    }
+
+    @Test
+    public void canCalculateMetricTwoDimensionalVectorLinf() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = 4.0f;
+        final float coordY = -100.0f;
+        final float expectedLinf = 4.0f;
+        v.add(coordX);
+        v.add(coordY);
+        float metricLinf = new VectorMetric().calculateLinf(v);
+        assertEquals(expectedLinf, metricLinf, comparisonDELTA);
+    }
+
+    @Test
+    public void canCalculateMetricThreeDimensionalVectorLinf() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = -55.0f;
+        final float coordY = -2.0f;
+        final float coordZ = 150.1f;
+        final float expectedLinf = 150.1f;
+        v.add(coordX);
+        v.add(coordY);
+        v.add(coordZ);
+        float metricLinf = new VectorMetric().calculateLinf(v);
+        assertEquals(expectedLinf, metricLinf, comparisonDELTA);
+    }
 }
+
 
 
 

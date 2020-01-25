@@ -1,5 +1,6 @@
 package ru.unn.agile.distancebetweenvector.model;
 
+import java.util.Collections;
 import java.util.Vector;
 
 public class VectorMetric {
@@ -28,7 +29,12 @@ public class VectorMetric {
         x.forEach((elem) -> sumOfModulesL4 += Math.pow((float) elem, pow));
         return (float) Math.pow((float) sumOfModulesL4, 1.0 / pow);
     }
+
+    public float calculateLinf(final Vector<Float> x) {
+        return (float) Collections.max(x);
+    }
 }
+
 
 
 
