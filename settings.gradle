@@ -54,6 +54,8 @@ project(":code/gameoflife/View").name = "GameOfLife-View"
 include "code/gameoflife/Infrastructure"
 project(":code/gameoflife/Infrastructure").name = "GameOfLife-Infrastructure"
 // Антипин Никита
+include "code/distance-between-vectors"
+project(":code/distance-between-vectors").name = "distance-between-vectors"
 // Ахмедов Саркар
 // temperature-converter
 include "code/temperature-converter/Model"
