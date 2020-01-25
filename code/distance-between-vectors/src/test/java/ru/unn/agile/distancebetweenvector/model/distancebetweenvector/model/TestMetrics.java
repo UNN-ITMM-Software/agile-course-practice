@@ -80,6 +80,43 @@ public class TestMetrics {
         float metricL2 = new VectorMetric().calculateL2(v);
         assertEquals(expectedL2, metricL2, comparisonDELTA);
     }
+
+    @Test
+    public void canCalculateMetricOneDimensionalVectorL3() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = -2.0f;
+        final float expectedL3 = 2.0f;
+        v.add(coordX);
+        float metricL3 = new VectorMetric().calculateL3(v);
+        assertEquals(expectedL3, metricL3, comparisonDELTA);
+    }
+
+    @Test
+    public void canCalculateMetricTwoDimensionalVectorL3() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = 2.0f;
+        final float coordY = -3.0f;
+        final float expectedL3 = 3.2710663101886f;
+        v.add(coordX);
+        v.add(coordY);
+        float metricL3 = new VectorMetric().calculateL3(v);
+        assertEquals(expectedL3, metricL3, comparisonDELTA);
+    }
+
+    @Test
+    public void canCalculateMetricThreeDimensionalVectorL3() {
+        Vector<Float> v = new Vector<Float>();
+        final float coordX = 2.0f;
+        final float coordY = 2.5f;
+        final float coordZ = -4.0f;
+        final float expectedL3 = 4.4416330599643f;
+        v.add(coordX);
+        v.add(coordY);
+        v.add(coordZ);
+        float metricL3 = new VectorMetric().calculateL3(v);
+        assertEquals(expectedL3, metricL3, comparisonDELTA);
+    }
 }
+
 
 
