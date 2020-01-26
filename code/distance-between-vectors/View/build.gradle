@@ -1,0 +1,16 @@
+plugins {
+      id 'application'
+      id 'org.openjfx.javafxplugin' version '0.0.8'
+    }
+
+    apply plugin: 'application'
+    mainClassName = 'ru.unn.agile.distancebetweenvector.view.Main'
+
+    javafx {
+        version = "11.0.2"
+        modules = [ 'javafx.controls', 'javafx.graphics', 'javafx.base', 'javafx.fxml' ]
+    }
+
+    dependencies {
+        compile project(':distance-between-vectors-ViewModel')
+}
