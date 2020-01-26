@@ -32,11 +32,20 @@ public class ViewModel {
     public boolean calculate() {
         Vector<Float> v = new Vector<>();
         Float x, y, z;
-
-        x = Float.parseFloat(coordX.get());
-        y = Float.parseFloat(coordY.get());
-        z = Float.parseFloat(coordZ.get());
-
+        try {
+            x = Float.parseFloat(coordX.get());
+            y = Float.parseFloat(coordY.get());
+            z = Float.parseFloat(coordZ.get());
+        } catch (Exception e) {
+            message.set("Пожалуйста, введите числа");
+            resultL1.set("ERROR");
+            resultL2.set("ERROR");
+            resultL3.set("ERROR");
+            resultL4.set("ERROR");
+            resultLinf.set("ERROR");
+            return false;
+        }
+        message.set("");
         v.add(x);
         v.add(y);
         v.add(z);
@@ -93,6 +102,12 @@ public class ViewModel {
     }
     public final String getResultLinf() {
         return resultLinf.get();
+    }
+    public StringProperty messageProperty() {
+        return message;
+    }
+    public final String getMessage() {
+        return message.get();
     }
 }
 

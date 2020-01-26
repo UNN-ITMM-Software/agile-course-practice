@@ -1,5 +1,7 @@
 package ru.unn.agile.distancebetweenvector.viewmodel;
 
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import org.junit.Test;
 import org.junit.After;
 import org.junit.Before;
@@ -25,11 +27,35 @@ public class ViewModelTests {
         assertEquals("", viewModel.coordXProperty().get());
         assertEquals("", viewModel.coordYProperty().get());
         assertEquals("", viewModel.coordZProperty().get());
+        assertEquals("", viewModel.messageProperty().get());
         assertEquals("", viewModel.resultL1Property().get());
         assertEquals("", viewModel.resultL2Property().get());
         assertEquals("", viewModel.resultL3Property().get());
         assertEquals("", viewModel.resultL4Property().get());
         assertEquals("", viewModel.resultLinfProperty().get());
+    }
+
+    @Test
+    public void canStopAndReturnFalseWhenNotNumber() {
+        viewModel.coordXProperty().set("a");
+        viewModel.coordYProperty().set("5");
+        viewModel.coordZProperty().set("5");
+        Boolean b = viewModel.calculate();
+        assertEquals(false, b);
+    }
+
+    @Test
+    public void canReturnErrorInCalcMetricsWhenNotNumber() {
+        viewModel.coordXProperty().set("a");
+        viewModel.coordYProperty().set("5");
+        viewModel.coordZProperty().set("5");
+        StringProperty error = new SimpleStringProperty();
+        Boolean b = viewModel.calculate();
+        assertEquals("ERROR", viewModel.resultL1Property().getValue());
+        assertEquals("ERROR", viewModel.resultL2Property().getValue());
+        assertEquals("ERROR", viewModel.resultL3Property().getValue());
+        assertEquals("ERROR", viewModel.resultL4Property().getValue());
+        assertEquals("ERROR", viewModel.resultLinfProperty().getValue());
     }
 
     @Test
@@ -61,6 +87,22 @@ public class ViewModelTests {
     }
 
     @Test
+    public void falseWhenHaveNotValue() {
+        Boolean b = viewModel.calculate();
+        assertEquals(false, b);
+    }
+
+    @Test
+    public void errorWhenHaveNotValue() {
+        Boolean b = viewModel.calculate();
+        assertEquals(viewModel.resultL1Property().getValue(), "ERROR");
+        assertEquals(viewModel.resultL2Property().getValue(), "ERROR");
+        assertEquals(viewModel.resultL3Property().getValue(), "ERROR");
+        assertEquals(viewModel.resultL4Property().getValue(), "ERROR");
+        assertEquals(viewModel.resultLinfProperty().getValue(), "ERROR");
+    }
+
+    @Test
     public void canNegativeResultFloatResult() {
         viewModel.coordXProperty().set("-1");
         viewModel.coordYProperty().set("-2");
@@ -76,5 +118,33 @@ public class ViewModelTests {
         assertEquals(2.571f, resultL3, comparisonDELTA);
         assertEquals(2.397f, resultL4, comparisonDELTA);
         assertEquals(-1.0f, resultLinf, comparisonDELTA);
+    }
+
+    @Test
+    public void messageIsNotEmptyWhenUncorrect() {
+        viewModel.coordXProperty().set("f");
+        viewModel.coordYProperty().set("2");
+        viewModel.coordZProperty().set("z");
+        viewModel.calculate();
+        Boolean notNull = false;
+        Integer lengthOfMessage = viewModel.messageProperty().length().getValue();
+        if (lengthOfMessage != 0) {
+            notNull = true;
+        }
+        assertTrue(notNull);
+    }
+
+    @Test
+    public void messageIsEmptyWhenCorrect() {
+        viewModel.coordXProperty().set("2");
+        viewModel.coordYProperty().set("2");
+        viewModel.coordZProperty().set("2");
+        viewModel.calculate();
+        Boolean notNull = false;
+        Integer lengthOfMessage = viewModel.messageProperty().length().getValue();
+        if (lengthOfMessage != 0) {
+            notNull = true;
+        }
+        assertFalse(notNull);
     }
 }
