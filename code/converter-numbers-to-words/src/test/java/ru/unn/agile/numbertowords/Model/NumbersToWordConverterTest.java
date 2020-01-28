@@ -164,4 +164,46 @@ public class NumbersToWordConverterTest {
         assertEquals("Ninety Nine", convertedNumber);
     }
 
+    @Test
+    public void canConvertOneHundred() {
+        String convertedNumber = convertToWord(100);
+        assertEquals("One Hundred ", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneHundredThree() {
+        String convertedNumber = convertToWord(103);
+        assertEquals("One Hundred Three", convertedNumber);
+    }
+
+    @Test
+    public void canConvertTheeHundredNineteen() {
+        String convertedNumber = convertToWord(319);
+        assertEquals("Three Hundred Nineteen", convertedNumber);
+    }
+
+    @Test
+    public void canConvertTwoHundredTwentyTwo() {
+        String convertedNumber = convertToWord(222);
+        assertEquals("Two Hundred Twenty Two", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFiveHundredFortySix() {
+        String convertedNumber = convertToWord(546);
+        assertEquals("Five Hundred Forty Six", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNineHundredEleven() {
+        String convertedNumber = convertToWord(911);
+        assertEquals("Nine Hundred Eleven", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNineHundredNineteenNine() {
+        String convertedNumber = convertToWord(999);
+        assertEquals("Nine Hundred Ninety Nine", convertedNumber);
+    }
+
 }

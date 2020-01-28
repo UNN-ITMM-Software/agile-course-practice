@@ -19,10 +19,15 @@ public final class ConverterNumbersToWord {
     }
 
     private static String getNameOfNumber(int number) {
-        if (number >= 20) {
+        if (number < 20)
+            return numbers[number];
+        if (number < 100) {
             return tens[number / 10] + " " + numbers[number % 10];
         }
-        return numbers[number];
+        if (number < 1000) {
+            return numbers[number / 100] + " Hundred " + getNameOfNumber(number % 100);
+        }
+        return "";
     }
 }
 
