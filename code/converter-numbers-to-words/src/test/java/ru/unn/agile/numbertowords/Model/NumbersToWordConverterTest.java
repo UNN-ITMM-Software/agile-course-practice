@@ -89,7 +89,7 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertTwenty() {
         String convertedNumber = convertToWord(20);
-        assertEquals("Twenty", convertedNumber);
+        assertEquals("Twenty ", convertedNumber);
     }
 
     @Test
@@ -114,6 +114,24 @@ public class NumbersToWordConverterTest {
     public void canConvertTwentyNine() {
         String convertedNumber = convertToWord(29);
         assertEquals("Twenty Nine", convertedNumber);
+    }
+
+    @Test
+    public void canConvertThirty() {
+        String convertedNumber = convertToWord(30);
+        assertEquals("Thirty ", convertedNumber);
+    }
+
+    @Test
+    public void canConvertThirtyFive() {
+        String convertedNumber = convertToWord(35);
+        assertEquals("Thirty Five", convertedNumber);
+    }
+
+    @Test
+    public void canConvertThirtyyNine() {
+        String convertedNumber = convertToWord(39);
+        assertEquals("Thirty Nine", convertedNumber);
     }
 
 }
