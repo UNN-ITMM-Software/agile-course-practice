@@ -89,7 +89,7 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertTwenty() {
         String convertedNumber = convertToWord(20);
-        assertEquals("Twenty ", convertedNumber);
+        assertEquals("Twenty", convertedNumber);
     }
 
     @Test
@@ -119,7 +119,7 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertThirty() {
         String convertedNumber = convertToWord(30);
-        assertEquals("Thirty ", convertedNumber);
+        assertEquals("Thirty", convertedNumber);
     }
 
     @Test
@@ -167,7 +167,7 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertOneHundred() {
         String convertedNumber = convertToWord(100);
-        assertEquals("One Hundred ", convertedNumber);
+        assertEquals("One Hundred", convertedNumber);
     }
 
     @Test
@@ -204,6 +204,42 @@ public class NumbersToWordConverterTest {
     public void canConvertNineHundredNineteenNine() {
         String convertedNumber = convertToWord(999);
         assertEquals("Nine Hundred Ninety Nine", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneThousand() {
+        String convertedNumber = convertToWord(1000);
+        assertEquals("One Thousand", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneThousandOne() {
+        String convertedNumber = convertToWord(1001);
+        assertEquals("One Thousand One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneThousandEleven() {
+        String convertedNumber = convertToWord(1011);
+        assertEquals("One Thousand Eleven", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneThousandOneHundredEleven() {
+        String convertedNumber = convertToWord(1111);
+        assertEquals("One Thousand One Hundred Eleven", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFiveThousandSixHundredNineteen() {
+        String convertedNumber = convertToWord(5619);
+        assertEquals("Five Thousand Six Hundred Nineteen", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNineThousandNineHundredNinetyNine() {
+        String convertedNumber = convertToWord(9999);
+        assertEquals("Nine Thousand Nine Hundred Ninety Nine", convertedNumber);
     }
 
 }

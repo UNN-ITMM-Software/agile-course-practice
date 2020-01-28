@@ -21,12 +21,13 @@ public final class ConverterNumbersToWord {
     private static String getNameOfNumber(int number) {
         if (number < 20)
             return numbers[number];
-        if (number < 100) {
-            return tens[number / 10] + " " + numbers[number % 10];
-        }
-        if (number < 1000) {
-            return numbers[number / 100] + " Hundred " + getNameOfNumber(number % 100);
-        }
+        if (number < 100)
+            return tens[number / 10] + ((number % 10 != 0) ? " " : "") + numbers[number % 10];
+        if (number < 1000)
+            return numbers[number / 100] + " Hundred" + ((number % 100 != 0) ? " " : "") + getNameOfNumber(number % 100);
+        if (number < 10000)
+            return getNameOfNumber(number / 1000) + " Thousand"
+                    + ((number % 1000 != 0) ? " " : "") + getNameOfNumber(number % 1000);
         return "";
     }
 }
