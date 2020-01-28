@@ -3,7 +3,7 @@ package ru.unn.agile.numbertowords.model;
 public final class ConverterNumbersToWord {
 
     private static final String[] numbers = {
-            "", "One", "Two", "Three"
+            "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
     };
 
     public static String convertToWord(int number) {
@@ -14,11 +14,8 @@ public final class ConverterNumbersToWord {
     }
 
     private static String getNameOfNumber(int number) {
-        if (number == 1) {
-            return numbers[1];
-        }
-        if (number == 2) {
-            return numbers[2];
+        if (number > 0 && number < numbers.length) {
+            return numbers[number];
         }
         return numbers[0];
     }
