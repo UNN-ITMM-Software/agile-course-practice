@@ -4,7 +4,8 @@ public final class ConverterNumbersToWord {
 
     private static final String[] numbers = {
             "", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten",
-            "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen"
+            "Eleven", "Twelve", "Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eighteen", "Nineteen",
+            "Twenty"
     };
 
     public static String convertToWord(int number) {
@@ -15,10 +16,10 @@ public final class ConverterNumbersToWord {
     }
 
     private static String getNameOfNumber(int number) {
-        if (number > 0 && number < numbers.length) {
-            return numbers[number];
+        if (number > 20) {
+            return numbers[20] + " " + numbers[number - 20];
         }
-        return numbers[0];
+        return numbers[number];
     }
 }
 

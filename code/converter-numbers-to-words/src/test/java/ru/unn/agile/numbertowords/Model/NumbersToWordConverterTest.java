@@ -86,7 +86,34 @@ public class NumbersToWordConverterTest {
         assertEquals("Nineteen", convertedNumber);
     }
 
+    @Test
+    public void canConvertTwenty() {
+        String convertedNumber = convertToWord(20);
+        assertEquals("Twenty", convertedNumber);
+    }
 
+    @Test
+    public void canConvertTwentyOne() {
+        String convertedNumber = convertToWord(21);
+        assertEquals("Twenty One", convertedNumber);
+    }
 
+    @Test
+    public void canConvertTwentyTwo() {
+        String convertedNumber = convertToWord(22);
+        assertEquals("Twenty Two", convertedNumber);
+    }
+
+    @Test
+    public void canConvertTwentyFive() {
+        String convertedNumber = convertToWord(25);
+        assertEquals("Twenty Five", convertedNumber);
+    }
+
+    @Test
+    public void canConvertTwentyNine() {
+        String convertedNumber = convertToWord(29);
+        assertEquals("Twenty Nine", convertedNumber);
+    }
 
 }
