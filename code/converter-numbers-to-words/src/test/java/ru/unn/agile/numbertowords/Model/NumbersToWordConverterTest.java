@@ -134,4 +134,34 @@ public class NumbersToWordConverterTest {
         assertEquals("Thirty Nine", convertedNumber);
     }
 
+    @Test
+    public void canConvertFiftyOne() {
+        String convertedNumber = convertToWord(51);
+        assertEquals("Fifty One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertSixtyNine() {
+        String convertedNumber = convertToWord(69);
+        assertEquals("Sixty Nine", convertedNumber);
+    }
+
+    @Test
+    public void canConvertSeventySeven() {
+        String convertedNumber = convertToWord(77);
+        assertEquals("Seventy Seven", convertedNumber);
+    }
+
+    @Test
+    public void canConvertEighty() {
+        String convertedNumber = convertToWord(85);
+        assertEquals("Eighty Five", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNinetyNine() {
+        String convertedNumber = convertToWord(99);
+        assertEquals("Ninety Nine", convertedNumber);
+    }
+
 }
