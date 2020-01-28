@@ -1,0 +1,4 @@
+dependencies {
+    compile project(':distance-between-vectors-ViewModel')
+    testCompile project(':distance-between-vectors-ViewModel').sourceSets.test.output
+}
