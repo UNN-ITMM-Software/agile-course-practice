@@ -13,4 +13,5 @@ plugins {
 
     dependencies {
         compile project(':distance-between-vectors-ViewModel')
+        compile project(':distance-between-vectors-Infrastructure')
 }
