@@ -53,6 +53,8 @@ include "code/gameoflife/View"
 project(":code/gameoflife/View").name = "GameOfLife-View"
 // Антипин Никита
 // Ахмедов Саркар
+include "code/converter-numbers-to-words"
+project(":code/converter-numbers-to-words").name = "converter-numbers-to-words"
 // temperature-converter
 include "code/temperature-converter/Model"
 project(":code/temperature-converter/Model").name = "temperature-converter-Model"
