@@ -60,6 +60,8 @@ include "code/distance-between-vectors/ViewModel"
 project(":code/distance-between-vectors/ViewModel").name = "distance-between-vectors-ViewModel"
 include "code/distance-between-vectors/View"
 project(":code/distance-between-vectors/View").name = "distance-between-vectors-View"
+include "code/distance-between-vectors/Infrastructure"
+project(":code/distance-between-vectors/Infrastructure").name = "distance-between-vectors-Infrastructure"
 // Ахмедов Саркар
 // temperature-converter
 include "code/temperature-converter/Model"
