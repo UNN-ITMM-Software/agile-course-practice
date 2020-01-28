@@ -19,4 +19,10 @@ public class NumbersToWordConverterTest {
         String convertedNumber = convertToWord(1);
         assertEquals("One", convertedNumber);
     }
+
+    @Test
+    public void canConvertTwo() {
+        String convertedNumber = convertToWord(2);
+        assertEquals("Two", convertedNumber);
+    }
 }
