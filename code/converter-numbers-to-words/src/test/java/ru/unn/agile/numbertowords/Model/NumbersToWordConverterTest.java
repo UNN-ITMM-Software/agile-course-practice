@@ -272,4 +272,58 @@ public class NumbersToWordConverterTest {
         assertEquals("Ninety Nine Thousand Nine Hundred Ninety Nine", convertedNumber);
     }
 
+    @Test
+    public void canConvertOneHundredThousand() {
+        String convertedNumber = convertToWord(100000);
+        assertEquals("One Hundred Thousand", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneHundredElevenThousand() {
+        String convertedNumber = convertToWord(111000);
+        assertEquals("One Hundred Eleven Thousand", convertedNumber);
+    }
+
+    @Test
+    public void canConvertTwoHundredFortySixThousandThreeHundredFiftyOne() {
+        String convertedNumber = convertToWord(246351);
+        assertEquals("Two Hundred Forty Six Thousand Three Hundred Fifty One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFourHundredThirtyFiveThousandSixHundredForty() {
+        String convertedNumber = convertToWord(435640);
+        assertEquals("Four Hundred Thirty Five Thousand Six Hundred Forty", convertedNumber);
+    }
+
+    @Test
+    public void canConvertSixHundredSixtySixThousandSixHundredSixtySix() {
+        String convertedNumber = convertToWord(666666);
+        assertEquals("Six Hundred Sixty Six Thousand Six Hundred Sixty Six", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNineHundredEightySevenThousandSixHundredFiftyFour() {
+        String convertedNumber = convertToWord(987654);
+        assertEquals("Nine Hundred Eighty Seven Thousand Six Hundred Fifty Four", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNegativeNumberSeventeen() {
+        String convertedNumber = convertToWord(-17);
+        assertEquals("Minus Seventeen", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNegativeNumberSixHundredForty() {
+        String convertedNumber = convertToWord(-640);
+        assertEquals("Minus Six Hundred Forty", convertedNumber);
+    }
+
+    @Test
+    public void canConvertMinusSixHundredSixtySixThousandSixHundredSixtySix() {
+        String convertedNumber = convertToWord(-666666);
+        assertEquals("Minus Six Hundred Sixty Six Thousand Six Hundred Sixty Six", convertedNumber);
+    }
+
 }

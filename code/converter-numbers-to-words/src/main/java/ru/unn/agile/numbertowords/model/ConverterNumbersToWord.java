@@ -12,6 +12,8 @@ public final class ConverterNumbersToWord {
     };
 
     public static String convertToWord(int number) {
+        if (number < 0)
+            return "Minus " + getNameOfNumber(-number);
         if (number == 0) {
             return "Zero";
         }
@@ -25,10 +27,10 @@ public final class ConverterNumbersToWord {
             return tens[number / 10] + ((number % 10 != 0) ? " " : "") + numbers[number % 10];
         if (number < 1000)
             return numbers[number / 100] + " Hundred" + ((number % 100 != 0) ? " " : "") + getNameOfNumber(number % 100);
-        if (number < 100000)
+        if (number < 1000000)
             return getNameOfNumber(number / 1000) + " Thousand"
                     + ((number % 1000 != 0) ? " " : "") + getNameOfNumber(number % 1000);
-        return "";
+        return "Cant convert number";
     }
 }
 
