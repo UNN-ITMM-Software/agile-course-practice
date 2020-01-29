@@ -335,7 +335,8 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertOneMillionFiveHundredSixtyOneThousandFiveHundredOne() {
         String convertedNumber = convertToWord(1561501);
-        assertEquals("One Million Five Hundred Sixty One Thousand Five Hundred One", convertedNumber);
+        assertEquals("One Million Five Hundred Sixty One Thousand Five Hundred One",
+                convertedNumber);
     }
 
     @Test
@@ -347,7 +348,8 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertNineHundredNineMillionNinetyThousandNineHundredNine() {
         String convertedNumber = convertToWord(909090909);
-        assertEquals("Nine Hundred Nine Million Ninety Thousand Nine Hundred Nine", convertedNumber);
+        assertEquals("Nine Hundred Nine Million Ninety Thousand Nine Hundred Nine",
+                convertedNumber);
     }
 
     @Test
@@ -371,7 +373,8 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertFloatZeroPointBigNumber() {
         String convertedNumber = convertToWord(0.11231231);
-        assertEquals("Zero point Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty One", convertedNumber);
+        assertEquals("Zero point Eleven Million Two Hundred Thirty One Thousand Two Hundred"
+                + " Thirty One", convertedNumber);
     }
 
     @Test
@@ -383,13 +386,16 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertFloatMinusBigNumberPointBigNumber() {
         String convertedNumber = convertToWord(-11231232.7131235);
-        assertEquals("Minus Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty Two point Seven Million One Hundred Thirty One Thousand Two Hundred Thirty Five", convertedNumber);
+        assertEquals("Minus Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty Two"
+                        + " point Seven Million One Hundred Thirty One Thousand Two Hundred Thirty Five",
+                convertedNumber);
     }
 
     @Test
     public void canConvertBigNumber() {
         String convertedNumber = convertToWord(2115458978);
-        assertEquals("Two Billion One Hundred Fifteen Million Four Hundred Fifty Eight Thousand Nine Hundred Seventy Eight", convertedNumber);
+        assertEquals("Two Billion One Hundred Fifteen Million Four Hundred Fifty Eight Thousand"
+                + " Nine Hundred Seventy Eight", convertedNumber);
 
     }
 
@@ -397,7 +403,9 @@ public class NumbersToWordConverterTest {
     @Test
     public void canConvertNegativeBigNumber() {
         String convertedNumber = convertToWord(-2115458978);
-        assertEquals("Minus Two Billion One Hundred Fifteen Million Four Hundred Fifty Eight Thousand Nine Hundred Seventy Eight", convertedNumber);
+        assertEquals("Minus Two Billion One Hundred Fifteen Million "
+                        + "Four Hundred Fifty Eight Thousand Nine Hundred Seventy Eight",
+                convertedNumber);
 
     }
 }
