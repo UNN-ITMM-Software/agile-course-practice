@@ -326,4 +326,64 @@ public class NumbersToWordConverterTest {
         assertEquals("Minus Six Hundred Sixty Six Thousand Six Hundred Sixty Six", convertedNumber);
     }
 
+    @Test
+    public void canConvertOneMillion() {
+        String convertedNumber = convertToWord(1000000);
+        assertEquals("One Million", convertedNumber);
+    }
+
+    @Test
+    public void canConvertOneMillionFiveHundredSixtyOneThousandFiveHundredOne() {
+        String convertedNumber = convertToWord(1561501);
+        assertEquals("One Million Five Hundred Sixty One Thousand Five Hundred One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFiftyFourMillionOneHundred() {
+        String convertedNumber = convertToWord(54000100);
+        assertEquals("Fifty Four Million One Hundred", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNineHundredNineMillionNinetyThousandNineHundredNine() {
+        String convertedNumber = convertToWord(909090909);
+        assertEquals("Nine Hundred Nine Million Ninety Thousand Nine Hundred Nine", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloat() {
+        String convertedNumber = convertToWord(2.75);
+        assertEquals("Two point Seventy Five", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloatZero() {
+        String convertedNumber = convertToWord(0.0);
+        assertEquals("Zero point Zero", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloatZeroPointOne() {
+        String convertedNumber = convertToWord(0.1);
+        assertEquals("Zero point One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloatZeroPointBigNumber() {
+        String convertedNumber = convertToWord(0.11231231);
+        assertEquals("Zero point Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloatMinusTwelvePointSeventyFive() {
+        String convertedNumber = convertToWord(-12.75);
+        assertEquals("Minus Twelve point Seventy Five", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFloatMinusBigNumberPointBigNumber() {
+        String convertedNumber = convertToWord(-11231232.7131235);
+        assertEquals("Minus Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty Two point Seven Million One Hundred Thirty One Thousand Two Hundred Thirty Five", convertedNumber);
+    }
+
 }

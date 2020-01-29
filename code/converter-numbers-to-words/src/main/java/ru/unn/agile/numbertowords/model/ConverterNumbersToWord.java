@@ -1,5 +1,7 @@
 package ru.unn.agile.numbertowords.model;
 
+import java.math.BigDecimal;
+
 public final class ConverterNumbersToWord {
 
     private static final String[] numbers = {
@@ -14,10 +16,24 @@ public final class ConverterNumbersToWord {
     public static String convertToWord(int number) {
         if (number < 0)
             return "Minus " + getNameOfNumber(-number);
-        if (number == 0) {
+        if (number == 0)
             return "Zero";
-        }
+
         return getNameOfNumber(number);
+    }
+
+    public static String convertToWord(Double number) {
+        BigDecimal bigDecimal = new BigDecimal(String.valueOf(number));
+        int intPart = bigDecimal.intValue();
+        String tempPart = bigDecimal.subtract(new BigDecimal(intPart)).toPlainString();
+        int decimalPart = Integer.parseInt(tempPart.split("\\.")[1]);
+
+        if (number < 0)
+            return "Minus " + convertToWord(-number);
+        if (number >= 0 && number < 1)
+            return "Zero point " + convertToWord(decimalPart);
+
+        return getNameOfNumber(intPart) + " point " + getNameOfNumber(decimalPart);
     }
 
     private static String getNameOfNumber(int number) {
@@ -30,6 +46,10 @@ public final class ConverterNumbersToWord {
         if (number < 1000000)
             return getNameOfNumber(number / 1000) + " Thousand"
                     + ((number % 1000 != 0) ? " " : "") + getNameOfNumber(number % 1000);
+        if (number < 1000000000)
+            return getNameOfNumber(number / 1000000) + " Million"
+                    + ((number % 1000000 != 0) ? " " : "") + getNameOfNumber(number % 1000000);
+
         return "Cant convert number";
     }
 }
