@@ -386,4 +386,18 @@ public class NumbersToWordConverterTest {
         assertEquals("Minus Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty Two point Seven Million One Hundred Thirty One Thousand Two Hundred Thirty Five", convertedNumber);
     }
 
+    @Test
+    public void canConvertBigNumber() {
+        String convertedNumber = convertToWord(2115458978);
+        assertEquals("Two Billion One Hundred Fifteen Million Four Hundred Fifty Eight Thousand Nine Hundred Seventy Eight", convertedNumber);
+
+    }
+
+
+    @Test
+    public void canConvertNegativeBigNumber() {
+        String convertedNumber = convertToWord(-2115458978);
+        assertEquals("Minus Two Billion One Hundred Fifteen Million Four Hundred Fifty Eight Thousand Nine Hundred Seventy Eight", convertedNumber);
+
+    }
 }

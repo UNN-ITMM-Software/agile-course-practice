@@ -49,6 +49,9 @@ public final class ConverterNumbersToWord {
         if (number < 1000000000)
             return getNameOfNumber(number / 1000000) + " Million"
                     + ((number % 1000000 != 0) ? " " : "") + getNameOfNumber(number % 1000000);
+        if (number < 2147483647)
+            return getNameOfNumber(number / 1000000000) + " Billion"
+                    + ((number % 1000000000 != 0) ? " " : "") + getNameOfNumber(number % 1000000000);
 
         return "Cant convert number";
     }
