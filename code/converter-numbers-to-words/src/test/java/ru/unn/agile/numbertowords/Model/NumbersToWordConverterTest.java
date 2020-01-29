@@ -387,8 +387,8 @@ public class NumbersToWordConverterTest {
     public void canConvertFloatMinusBigNumberPointBigNumber() {
         String convertedNumber = convertToWord(-11231232.7131235);
         assertEquals("Minus Eleven Million Two Hundred Thirty One Thousand Two Hundred Thirty Two"
-                        + " point Seven Million One Hundred Thirty One Thousand Two Hundred Thirty Five",
-                convertedNumber);
+                + " point Seven Million One Hundred Thirty One Thousand Two Hundred"
+                + " Thirty Five", convertedNumber);
     }
 
     @Test
