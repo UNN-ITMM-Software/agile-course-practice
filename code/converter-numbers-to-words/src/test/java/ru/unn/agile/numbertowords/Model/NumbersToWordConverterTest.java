@@ -242,4 +242,34 @@ public class NumbersToWordConverterTest {
         assertEquals("Nine Thousand Nine Hundred Ninety Nine", convertedNumber);
     }
 
+    @Test
+    public void canConvertFifteenThousandFourHundredFiftySix() {
+        String convertedNumber = convertToWord(15456);
+        assertEquals("Fifteen Thousand Four Hundred Fifty Six", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFiftyThousand() {
+        String convertedNumber = convertToWord(50000);
+        assertEquals("Fifty Thousand", convertedNumber);
+    }
+
+    @Test
+    public void canConvertSeventySevenThousandFiveHundredFortyEight() {
+        String convertedNumber = convertToWord(77548);
+        assertEquals("Seventy Seven Thousand Five Hundred Forty Eight", convertedNumber);
+    }
+
+    @Test
+    public void canConvertFiftyThousandOne() {
+        String convertedNumber = convertToWord(50001);
+        assertEquals("Fifty Thousand One", convertedNumber);
+    }
+
+    @Test
+    public void canConvertNinetyNineThousandNineHundredNinetyNine() {
+        String convertedNumber = convertToWord(99999);
+        assertEquals("Ninety Nine Thousand Nine Hundred Ninety Nine", convertedNumber);
+    }
+
 }
