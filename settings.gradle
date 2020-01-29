@@ -55,6 +55,8 @@ include "code/gameoflife/Infrastructure"
 project(":code/gameoflife/Infrastructure").name = "GameOfLife-Infrastructure"
 // Антипин Никита
 // Ахмедов Саркар
+include "code/converter-numbers-to-words"
+project(":code/converter-numbers-to-words").name = "converter-numbers-to-words"
 // temperature-converter
 include "code/temperature-converter/Model"
 project(":code/temperature-converter/Model").name = "temperature-converter-Model"
