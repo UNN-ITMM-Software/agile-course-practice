@@ -10,8 +10,8 @@ public class Main extends Application {
 
     @Override
     public void start(final Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("CalculatorVolume.fxml"));
-        primaryStage.setTitle("Calculator Volume");
+        Parent root = FXMLLoader.load(getClass().getResource("FiguresVolumeCalculator.fxml"));
+        primaryStage.setTitle("Figures Volumes Calculator");
         primaryStage.setScene(new Scene(root));
         primaryStage.show();
     }

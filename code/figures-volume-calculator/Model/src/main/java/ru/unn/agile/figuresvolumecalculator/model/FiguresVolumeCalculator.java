@@ -11,11 +11,12 @@ public final class FiguresVolumeCalculator {
         return MathConstants.ONE_THIRD * baseSquare * Math.abs(height);
     }
 
-    public static double sphereVolumeCalculate(final double radius) {
+    public static double sphereVolumeCalculate(final double radius, final double secondParameter) {
         if (radius < 0) {
             throw new IllegalArgumentException("Radius can't be negative");
         }
-        return MathConstants.FOUR_THIRDS * Math.PI * Math.pow(radius, MathConstants.THREE);
+        return MathConstants.FOUR_THIRDS * Math.PI * Math.pow(radius, MathConstants.THREE)
+                * secondParameter;
     }
 
     public static double cylinderVolumeCalculate(final double baseRadius, final double height) {
@@ -41,61 +42,54 @@ public final class FiguresVolumeCalculator {
         return baseSquare * Math.abs(height);
     }
 
-    public static double octahedronVolumeCalculate(final double edgeLength) {
+    public static double octahedronVolumeCalculate(final double edgeLength,
+                                                   final double secondParameter) {
         if (edgeLength < 0) {
             throw new IllegalArgumentException("Edge can't be negative");
         }
         return MathConstants.ONE_THIRD * Math.sqrt(MathConstants.TWO)
-               * Math.pow(edgeLength, MathConstants.THREE);
+               * Math.pow(edgeLength, MathConstants.THREE * secondParameter);
     }
 
-    private FiguresVolumeCalculator() { }
-
-    public enum TypeOfFunction {
-        PYRAMID_VOLUME("Pyramid volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.pyramidVolumeCalculate(x, y);
-                return vol.toString();
+    public enum Operation {
+        CALCULATE_PYRAMID_VOLUME("Calculate Pyramid Volume") {
+            public double apply(final double baseSquare, final double height) {
+                return FiguresVolumeCalculator.pyramidVolumeCalculate(baseSquare, height);
+            }
+        },
+        CALCULATE_SPHERE_VOLUME("Calculate Sphere Volume") {
+            public double apply(final double radius, final double secondParameter) {
+                return FiguresVolumeCalculator.sphereVolumeCalculate(radius, secondParameter);
             }
         },
 
-        SPHERE_VOLUME("Sphere volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.sphereVolumeCalculate(x);
-                return vol.toString();
+        CALCULATE_CYLINDER_VOLUME("Calculate Cylinder Volume") {
+            public double apply(final double baseRadius, final double height) {
+                return FiguresVolumeCalculator.cylinderVolumeCalculate(baseRadius, height);
             }
         },
 
-        CYLINDER_VOLUME("Cylinder volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.cylinderVolumeCalculate(x, y);
-                return vol.toString();
+        CALCULATE_CONE_VOLUME("Calculate Cone Volume") {
+            public double apply(final double baseRadius, final double height) {
+                return FiguresVolumeCalculator.coneVolumeCalculate(baseRadius, height);
             }
         },
 
-        CONE_VOLUME("Cone volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.coneVolumeCalculate(x, y);
-                return vol.toString();
+        CALCULATE_PARALLELEPIPED_VOLUME("Calculate Parallelepiped Volume") {
+            public double apply(final double baseSquare, final double height) {
+                return FiguresVolumeCalculator.parallelepipedVolumeCalculate(baseSquare, height);
             }
         },
-
-        PARALLELEPIPED_VOLUME("Parallelepiped volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.parallelepipedVolumeCalculate(x, y);
-                return vol.toString();
-            }
-        },
-
-        OCTAHEDRON_VOLUME("Octahedron volume") {
-            public String apply(final double x, final double y) {
-                Double vol = FiguresVolumeCalculator.octahedronVolumeCalculate(x);
-                return vol.toString();
+        CALCULATE_OCTAHEDRON_VOLUME("Calculate Octahedron Volume") {
+            public double apply(final double edgeLength, final double secondParameter) {
+                return FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength,
+                        secondParameter);
             }
         };
 
+
         private final String name;
-        TypeOfFunction(final String name) {
+        Operation(final String name) {
             this.name = name;
         }
 
@@ -103,8 +97,8 @@ public final class FiguresVolumeCalculator {
         public String toString() {
             return name;
         }
-
-        public abstract String apply(double x, double y);
-
+        public abstract double apply(double firstParameters, double secondParameters);
     }
+
+    private FiguresVolumeCalculator() { }
 }
