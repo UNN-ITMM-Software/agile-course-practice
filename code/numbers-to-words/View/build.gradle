@@ -13,4 +13,5 @@
 
     dependencies {
         compile project(':numbers-to-words-ViewModel')
+        compile project(':numbers-to-words-Infrastructure')
 }

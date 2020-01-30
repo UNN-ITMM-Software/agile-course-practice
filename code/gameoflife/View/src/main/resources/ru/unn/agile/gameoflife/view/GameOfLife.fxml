@@ -3,9 +3,10 @@
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+
 <?import ru.unn.agile.gameoflife.viewmodel.*?>
 
-<AnchorPane prefHeight="510.0" prefWidth="410.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.gameoflife.view.GameOfLife">
+<AnchorPane prefHeight="510.0" prefWidth="853.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.unn.agile.gameoflife.view.GameOfLife">
     <fx:define>
         <ViewModel fx:id="viewModel" />
     </fx:define>
@@ -17,6 +18,7 @@
       <Button fx:id="btnNext" layoutX="81.0" layoutY="67.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="94.0" text="Next" AnchorPane.leftAnchor="262.0" AnchorPane.topAnchor="67.0" />
       <TextField fx:id="txtHeight" layoutX="111.0" layoutY="10.0" prefHeight="25.0" prefWidth="77.0" AnchorPane.topAnchor="10.0" />
       <TextField fx:id="txtwidth" layoutX="290.0" layoutY="10.0" prefHeight="25.0" prefWidth="77.0" AnchorPane.topAnchor="10.0" />
-      <GridPane fx:id="gridGame" layoutX="58.0" layoutY="232.0" prefHeight="226.0" prefWidth="253.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="105.0" />
+      <GridPane fx:id="gridGame" layoutX="58.0" layoutY="232.0" prefHeight="400.0" prefWidth="373.0" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="195.0" AnchorPane.topAnchor="105.0" />
+      <TextArea fx:id="areaLog" editable="false" layoutX="395.0" layoutY="12.0" prefHeight="487.0" prefWidth="447.0" text="${viewModel.logsField}" AnchorPane.bottomAnchor="11.0" AnchorPane.rightAnchor="11.0" AnchorPane.topAnchor="11.0" />
    </children>
 </AnchorPane>

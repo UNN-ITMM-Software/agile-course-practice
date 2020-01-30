@@ -199,3 +199,7 @@ task jacocoRootReport(type: org.gradle.testing.jacoco.tasks.JacocoReport) {
         }))
     }
 }
+
+dependencies {
+    implementation 'junit:junit:4.12'
+}

@@ -51,6 +51,8 @@ include "code/gameoflife/ViewModel"
 project(":code/gameoflife/ViewModel").name = "GameOfLife-ViewModel"
 include "code/gameoflife/View"
 project(":code/gameoflife/View").name = "GameOfLife-View"
+include "code/gameoflife/Infrastructure"
+project(":code/gameoflife/Infrastructure").name = "GameOfLife-Infrastructure"
 // Антипин Никита
 // Ахмедов Саркар
 // temperature-converter
@@ -147,6 +149,8 @@ include "code/numbers-to-words/View"
 project(":code/numbers-to-words/View").name = "numbers-to-words-View"
 include "code/numbers-to-words/ViewModel"
 project(":code/numbers-to-words/ViewModel").name = "numbers-to-words-ViewModel"
+include "code/numbers-to-words/Infrastructure"
+project(":code/numbers-to-words/Infrastructure").name = "numbers-to-words-Infrastructure"
 
 
 // Deposit Calculator

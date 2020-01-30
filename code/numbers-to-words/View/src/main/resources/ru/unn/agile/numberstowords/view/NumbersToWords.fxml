@@ -9,16 +9,13 @@
    <fx:define>
       <ViewModel fx:id="viewModel" />
    </fx:define>
-   <children>
-      <AnchorPane prefHeight="200.0" prefWidth="361.0">
-         <children>
+      <AnchorPane prefHeight="200.0" prefWidth="443.0">
             <TextField fx:id="txtNumber" layoutX="26.0" layoutY="45.0" prefHeight="25.0" prefWidth="115.0" />
             <Label layoutX="26.0" layoutY="28.0" text="Number: " />
-            <Label layoutX="26.0" layoutY="123.0" text="Text:" />
+            <Label layoutX="26.0" layoutY="145.0" text="Text:" />
             <Button fx:id="btnConvert" layoutX="84.0" layoutY="81.0" mnemonicParsing="false" text="convert" />
-            <TextField fx:id="txtText" layoutX="26.0" layoutY="140.0" prefHeight="25.0" prefWidth="309.0" />
+            <TextField fx:id="txtText" layoutX="26.0" layoutY="162.0" prefHeight="25.0" prefWidth="396.0" />
             <Label fx:id="labelErrorMsg" alignment="TOP_LEFT" layoutX="158.0" layoutY="41.0" prefHeight="84.0" prefWidth="172.0" wrapText="true" />
-         </children>
+            <TextArea text="${viewModel.logs}" editable="false" layoutX="158.0" layoutY="23.0" prefHeight="131.0" prefWidth="265.0" VBox.vgrow="ALWAYS"/>
       </AnchorPane>
-   </children>
 </AnchorPane>

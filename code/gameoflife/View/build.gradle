@@ -13,4 +13,5 @@ javafx {
 
 dependencies {
     compile project(':GameOfLife-ViewModel')
+	compile project(':GameOfLife-Infrastructure')
 }

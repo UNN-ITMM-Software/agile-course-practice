@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import ru.unn.agile.numberstowords.infrastructure.TxtLogger;
 import ru.unn.agile.numberstowords.viewmodel.ViewModel;
 
 public class NumbersToWords {
@@ -22,6 +23,8 @@ public class NumbersToWords {
 
     @FXML
     void initialize() {
+        viewModel.setLogger(new TxtLogger("./TxtLogger.log"));
+
         txtNumber.textProperty().bindBidirectional(viewModel.numberInputProperty());
         txtText.textProperty().bindBidirectional(viewModel.textOutputProperty());
         labelErrorMsg.textProperty().bindBidirectional(viewModel.statusProperty());
