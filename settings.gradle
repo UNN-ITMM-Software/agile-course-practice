@@ -133,6 +133,8 @@ include "code/vectors-distances-calculator/ViewModel"
 project(":code/vectors-distances-calculator/ViewModel").name = "vectors-distances-calculator-ViewModel"
 include "code/vectors-distances-calculator/View"
 project(":code/vectors-distances-calculator/View").name = "vectors-distances-calculator-View"
+include ":code/vectors-distances-calculator/Infrastructure"
+project(":code/vectors-distances-calculator/Infrastructure").name = "vectors-distances-calculator-Infrastructure"
 // Киселева Ольга
 include "code/huffman/Model"
 project(":code/huffman/Model").name = "huffman-Model"
