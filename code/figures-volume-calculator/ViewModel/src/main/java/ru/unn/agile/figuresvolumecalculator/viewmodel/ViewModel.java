@@ -133,10 +133,10 @@ public class ViewModel {
 }
 
 enum Status {
-    WAITING("Please enter input data"),
-    READY("Press 'Calculate'"),
-    BAD_FORMAT("Bad format, please fix"),
-    SUCCESS("Success!");
+    WAITING("Entre the input data plz"),
+    BAD_FORMAT("Bad format, please fix it"),
+    READY("Press 'Calculate' button"),
+    SUCCESS("Success");
 
     private final String name;
     Status(final String name) {
