@@ -40,14 +40,17 @@ public class FiguresVolumeCalculatorTest {
     public void canCalculateSphereVolume() {
         final double expectedVolume = 113.097;
         final double radius = 3;
-        final double actualVolume = FiguresVolumeCalculator.sphereVolumeCalculate(radius);
+        final double secondParameter = 1;
+        final double actualVolume = FiguresVolumeCalculator.sphereVolumeCalculate(radius,
+                                                                                  secondParameter);
         assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfSphereRadiusIsNegative() {
         final double radius = -3;
-        FiguresVolumeCalculator.sphereVolumeCalculate(radius);
+        final double secondParameter = 1;
+        FiguresVolumeCalculator.sphereVolumeCalculate(radius, secondParameter);
     }
 
     @Test
@@ -155,13 +158,16 @@ public class FiguresVolumeCalculatorTest {
     public void canCalculateOctahedronVolume() {
         final double expectedVolume = 12.72;
         final double edgeLength = 3;
-        final double actualVolume = FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength);
+        final double secondParameter = 1;
+        final double actualVolume = FiguresVolumeCalculator
+                                    .octahedronVolumeCalculate(edgeLength, secondParameter);
         assertEquals(expectedVolume, actualVolume, delta);
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void canThrowExceptionIfOctahedronEdgeIsNegative() {
         final double edgeLength = -1;
-        FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength);
+        final double secondParameter = 1;
+        FiguresVolumeCalculator.octahedronVolumeCalculate(edgeLength, secondParameter);
     }
 }
