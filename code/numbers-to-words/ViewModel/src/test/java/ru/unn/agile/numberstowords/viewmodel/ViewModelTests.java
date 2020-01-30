@@ -16,13 +16,13 @@ public class ViewModelTests {
     }
 
     @Before
-    public void setUp() {
+    public void setIUp() {
         FakeLogger logger = new FakeLogger();
         viewModel = new ViewModel(logger);
     }
 
     @After
-    public void tearDown() {
+    public void tearIDown() {
         viewModel = null;
     }
 
