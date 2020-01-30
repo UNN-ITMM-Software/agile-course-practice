@@ -10,15 +10,17 @@ import static org.junit.Assert.*;
 public class ViewModelTests {
     private ViewModel viewModel;
 
+
+    @After
+    public void tearItDown() {
+        viewModel = null;
+    }
+
     @Before
-    public void setUp() {
+    public void setItUp() {
         viewModel = new ViewModel();
     }
 
-    @After
-    public void tearDown() {
-        viewModel = null;
-    }
 
     @Test
     public void canSetDefaultValues() {
