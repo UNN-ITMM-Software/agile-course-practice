@@ -5,6 +5,8 @@ import org.junit.Before;
 import org.junit.Test;
 import ru.unn.agile.vectorsdistancescalculator.model.VectorsDistancesCalculator.Operation;
 
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class ViewModelTests {
@@ -15,12 +17,18 @@ public class ViewModelTests {
 
     @Before
     public void setUp() {
-        viewModel = new ViewModel();
+        if (viewModel == null) {
+            viewModel = new ViewModel(new FakeLogger());
+        }
     }
 
     @After
     public void tearDown() {
         viewModel = null;
+    }
+
+    public void setOutsideViewModel(final ViewModel viewModel) {
+        this.viewModel = viewModel;
     }
 
     @Test
@@ -168,4 +176,150 @@ public class ViewModelTests {
         viewModel.y2Property().set("-6");
         viewModel.z2Property().set("7");
     }
+
+    @Test
+    public void canCreateViewModelWithLogger() {
+        FakeLogger logger = new FakeLogger();
+        ViewModel viewModelLogged = new ViewModel(logger);
+
+        assertNotNull(viewModelLogged);
+    }
+
+    @Test
+    public void canCreateViewModel() {
+        ViewModel viewModel = new ViewModel();
+
+        assertNotNull(viewModel);
+    }
+
+    @Test
+    public void canSetDefaultLog() {
+        assertEquals(0, viewModel.getLog().size());
+    }
+
+    @Test
+    public void logIsEmptyInTheStarting() {
+        List<String> log = viewModel.getLog();
+
+        assertTrue(log.isEmpty());
+    }
+
+    @Test
+    public void logContainsCorrectMessageAfterCalculation() {
+        setMixedInputVectors();
+        viewModel.calculate();
+        String message = viewModel.getLog().get(0);
+
+        assertTrue(message.matches(".*" + LogMessages.CALCULATE_WAS_PRESSED + ".*"));
+    }
+
+    @Test
+    public void logContainsCorrectInputArgumentsAfterCalculation() {
+        setMixedInputVectors();
+
+        viewModel.calculate();
+
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*" + viewModel.x1Property().get()
+                + ".*" + viewModel.y1Property().get()
+                + ".*" + viewModel.z1Property().get()
+                + ".*" + viewModel.x2Property().get()
+                + ".*" + viewModel.y2Property().get()
+                + ".*" + viewModel.z2Property().get() + ".*"));
+    }
+
+    @Test
+    public void argumentsInfoIsCorrectlyFormatted() {
+        setMixedInputVectors();
+
+        viewModel.calculate();
+
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*Arguments"
+                + ": X1 = "  + viewModel.x1Property().get()
+                + "; Y1 = "  + viewModel.y1Property().get()
+                + "; Z1 = "  + viewModel.z1Property().get()
+                + "; X2 = "  + viewModel.x2Property().get()
+                + "; Y2 = "  + viewModel.y2Property().get()
+                + "; Z2 = "  + viewModel.z2Property().get() + ".*"));
+    }
+
+    @Test
+    public void operationTypeIsAdvertededInTheLog() {
+        setMixedInputVectors();
+
+        viewModel.calculate();
+
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*Calculate L1 Distance.*"));
+    }
+
+    @Test
+    public void canPutSomeLogMessages() {
+        setMixedInputVectors();
+
+        viewModel.calculate();
+        viewModel.calculate();
+        viewModel.calculate();
+
+        assertEquals(3, viewModel.getLog().size());
+    }
+
+    @Test
+    public void canSeeWhenOperationChangeInLog() {
+        setMixedInputVectors();
+
+        viewModel.onOperationChanged(Operation.CALCULATE_L1_DISTANCE,
+                Operation.CALCULATE_L2_DISTANCE);
+
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*" + LogMessages.OPERATION_WAS_CHANGED
+                + "Calculate L2 Distance.*"));
+    }
+
+    @Test
+    public void operationIsNotLoggedIfNotChanged() {
+        viewModel.onOperationChanged(Operation.CALCULATE_L1_DISTANCE,
+                Operation.CALCULATE_L2_DISTANCE);
+
+        viewModel.onOperationChanged(Operation.CALCULATE_L2_DISTANCE,
+                Operation.CALCULATE_L2_DISTANCE);
+
+        assertEquals(1, viewModel.getLog().size());
+    }
+
+    @Test
+    public void argumentsAreProperlyLogged() {
+        setMixedInputVectors();
+
+        viewModel.onFocusChanged(Boolean.TRUE, Boolean.FALSE);
+
+        String message = viewModel.getLog().get(0);
+        assertTrue(message.matches(".*" + LogMessages.EDITING_FINISHED
+                + "Input arguments are: \\["
+                + viewModel.x1Property().get() + "; "
+                + viewModel.y1Property().get() + "; "
+                + viewModel.z1Property().get() + "; "
+                + viewModel.x2Property().get() + "; "
+                + viewModel.y2Property().get() + "; "
+                + viewModel.z2Property().get() + "\\]"));
+    }
+
+    @Test
+    public void calculateIsNotCalledWhenButtonIsDisabled() {
+        viewModel.calculate();
+
+        assertTrue(viewModel.getLog().isEmpty());
+    }
+
+    @Test
+    public void doNotLogSameParametersTwiceWithPartialInput() {
+        viewModel.x1Property().set("12");
+        viewModel.onFocusChanged(Boolean.TRUE, Boolean.FALSE);
+        viewModel.x1Property().set("12");
+        viewModel.onFocusChanged(Boolean.TRUE, Boolean.FALSE);
+
+        assertEquals(1, viewModel.getLog().size());
+    }
+
 }

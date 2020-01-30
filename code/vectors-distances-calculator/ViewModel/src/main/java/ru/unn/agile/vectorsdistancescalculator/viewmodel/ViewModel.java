@@ -27,9 +27,13 @@ public class ViewModel {
     private final StringProperty resultField = new SimpleStringProperty();
     private final StringProperty statusField = new SimpleStringProperty();
 
-    private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
+    private List<ListenerForChangeCachingValues> valueChangedListeners;
 
-    public ViewModel() {
+    private ILogger logger;
+    private final StringProperty logs = new SimpleStringProperty();
+
+
+    private void init() {
         x1.set("");
         y1.set("");
         z1.set("");
@@ -60,10 +64,55 @@ public class ViewModel {
             add(z2);
         } };
 
+        valueChangedListeners = new ArrayList<>();
         for (StringProperty field : fields) {
-            final ValueChangeListener listener = new ValueChangeListener();
+            final ListenerForChangeCachingValues listener = new ListenerForChangeCachingValues();
             field.addListener(listener);
             valueChangedListeners.add(listener);
+        }
+    }
+
+    public ViewModel() {
+        init();
+    }
+
+    public ViewModel(final ILogger logger) {
+
+        setLogger(logger);
+        init();
+    }
+
+    public void onOperationChanged(final Operation oldValue, final Operation newValue) {
+        if (oldValue.equals(newValue)) {
+            return;
+        }
+        StringBuilder messageLog = new StringBuilder(LogMessages.OPERATION_WAS_CHANGED);
+        messageLog.append(newValue.toString());
+        logger.log(messageLog.toString());
+        updateLogs();
+    }
+
+    public void onFocusChanged(final Boolean oldValue, final Boolean newValue) {
+        if (!oldValue && newValue) {
+            return;
+        }
+
+        for (ListenerForChangeCachingValues listener : valueChangedListeners) {
+            if (listener.isChanged()) {
+                StringBuilder message = new StringBuilder(LogMessages.EDITING_FINISHED);
+                message.append("Input arguments are: [")
+                        .append(x1.get()).append("; ")
+                        .append(y1.get()).append("; ")
+                        .append(z1.get()).append("; ")
+                        .append(x2.get()).append("; ")
+                        .append(y2.get()).append("; ")
+                        .append(z2.get()).append("]");
+                logger.log(message.toString());
+                updateLogs();
+
+                listener.cache();
+                break;
+            }
         }
     }
 
@@ -100,6 +149,10 @@ public class ViewModel {
         return inputStatus;
     }
 
+    public final List<String> getLog() {
+        return logger.getLog();
+    }
+
     public StringProperty x1Property() {
         return x1;
     }
@@ -130,6 +183,12 @@ public class ViewModel {
     public BooleanProperty calculationDisabledFlagProperty() {
         return calculationDisabledFlag;
     }
+    public StringProperty logsProperty() {
+        return logs;
+    }
+    public final String getLogs() {
+        return logs.get();
+    }
     public final ObservableList<Operation> getOperationList() {
         return operationList.get();
     }
@@ -141,6 +200,26 @@ public class ViewModel {
     }
     public final String getStatusField() {
         return statusField.get();
+    }
+
+    private class ListenerForChangeCachingValues implements ChangeListener<String> {
+        private String previousValue = new String("");
+        private String currentValue = new String("");
+        @Override
+        public void changed(final ObservableValue<? extends String> observable,
+                            final String oldValue, final String newValue) {
+            if (oldValue.equals(newValue)) {
+                return;
+            }
+            statusField.set(getInputStatus().toString());
+            currentValue = newValue;
+        }
+        public boolean isChanged() {
+            return !previousValue.equals(currentValue);
+        }
+        public void cache() {
+            previousValue = currentValue;
+        }
     }
 
     public void calculate() {
@@ -156,17 +235,39 @@ public class ViewModel {
         List<Double> x = new ArrayList<>(List.of(x1d, y1d, z1d));
         List<Double> y = new ArrayList<>(List.of(x2d, y2d, z2d));
 
-        resultField.set(String.valueOf(operation.get().apply(x, y)));
+        var result = String.valueOf(operation.get().apply(x, y));
+
+        resultField.set(result);
         statusField.set(Status.SUCCESS.toString());
+
+        StringBuilder message = new StringBuilder(LogMessages.CALCULATE_WAS_PRESSED);
+        message.append("Arguments: X1 = ").append(x1.get())
+                .append("; Y1 = ").append(y1.get())
+                .append("; Z1 = ").append(z1.get())
+                .append("; X2 = ").append(x2.get())
+                .append("; Y2 = ").append(y2.get())
+                .append("; Z2 = ").append(z2.get())
+                .append(" Operation: ").append(operation.get().toString()).append(".");
+        logger.log(message.toString());
+        updateLogs();
     }
 
-    private class ValueChangeListener implements ChangeListener<String> {
-        @Override
-        public void changed(final ObservableValue<? extends String> observable,
-                            final String oldValue, final String newValue) {
-            statusField.set(getInputStatus().toString());
+    public final void setLogger(final ILogger logger) {
+        if (logger == null) {
+            throw new IllegalArgumentException("Logger parameter can't be null");
         }
+        this.logger = logger;
     }
+
+    private void updateLogs() {
+        List<String> fullLog = logger.getLog();
+        String record = new String("");
+        for (String log : fullLog) {
+            record += log + "\n";
+        }
+        logs.set(record);
+    }
+
 }
 
 enum Status {
@@ -175,11 +276,20 @@ enum Status {
     BAD_FORMAT("Bad format, please fix"),
     SUCCESS("Success!");
 
-    private final String name;
+    private final String tittle;
     Status(final String name) {
-        this.name = name;
+        this.tittle = name;
     }
     public String toString() {
-        return name;
+        return tittle;
     }
+}
+
+
+final class LogMessages {
+    public static final String CALCULATE_WAS_PRESSED = "Calculate. ";
+    public static final String OPERATION_WAS_CHANGED = "Operation was changed to ";
+    public static final String EDITING_FINISHED = "Updated input. ";
+
+    private LogMessages() { }
 }
