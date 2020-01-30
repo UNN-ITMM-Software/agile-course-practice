@@ -123,6 +123,33 @@ public class ViewModel {
         return statusFld.get();
     }
 
+    public void calculate() {
+        if (calculationDisabledFl.get()) {
+            return;
+        }
+        try {
+            if (operation.get() == Operation.CALCULATE_SPHERE_VOLUME
+                    || operation.get() == Operation.CALCULATE_OCTAHEDRON_VOLUME) {
+                secondParameter.set("1");
+            }
+
+            double firstParameterd = Double.parseDouble(firstParameter.get());
+            double secondParameterd = Double.parseDouble(secondParameter.get());
+
+            if (operation.get() == Operation.CALCULATE_SPHERE_VOLUME
+                    || operation.get() == Operation.CALCULATE_OCTAHEDRON_VOLUME) {
+                secondParameter.set("");
+            }
+
+            resultFld.set(String.valueOf(operation.get().apply(firstParameterd,
+                    secondParameterd)));
+            statusFld.set(Status.SUCCESS.toString());
+        } catch (IllegalArgumentException iae) {
+            statusFld.set(Status.BAD_FORMAT.toString());
+        }
+
+    }
+
     private class ValueChangeListener implements ChangeListener<String> {
         @Override
         public void changed(final ObservableValue<? extends String> observable,

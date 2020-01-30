@@ -95,6 +95,136 @@ public class ViewModelTests {
         assertEquals(Operation.CALCULATE_PYRAMID_VOLUME, viewModel.operationProperty().get());
     }
 
+    @Test
+    public void operationCalculatePyramidVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("1");
+        viewModel.secondParameterProperty().set("12");
+
+        viewModel.calculate();
+
+        assertEquals("4.0", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculatePyramidVolumeWithNegativeHeightHasCorrectResult() {
+        viewModel.firstParameterProperty().set("1");
+        viewModel.secondParameterProperty().set("-12");
+        viewModel.operationProperty().set(Operation.CALCULATE_PYRAMID_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("4.0", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void canSetSuccessMessage() {
+        setInputData();
+
+        viewModel.calculate();
+
+        assertEquals(Status.SUCCESS.toString(), viewModel.statusFieldProperty().get());
+    }
+
+    @Test
+    public void canSetBadFormatMessage() {
+        viewModel.firstParameterProperty().set("bad_test");
+
+        assertEquals(Status.BAD_FORMAT.toString(), viewModel.statusFieldProperty().get());
+    }
+
+    @Test
+    public void statusIsReadyWhenSetProperData() {
+        setInputData();
+
+        assertEquals(Status.READY.toString(), viewModel.statusFieldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateCylinderVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("3");
+        viewModel.operationProperty().set(Operation.CALCULATE_CYLINDER_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("84.82300164692441", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateCylinderVolumeWithNegativeHeightHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("-3");
+        viewModel.operationProperty().set(Operation.CALCULATE_CYLINDER_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("84.82300164692441", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateConeVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("3");
+        viewModel.operationProperty().set(Operation.CALCULATE_CONE_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("28.274333882308138", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateConeVolumeWithNegativeHeightHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("-3");
+        viewModel.operationProperty().set(Operation.CALCULATE_CONE_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("28.274333882308138", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateParallelipipedVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("3");
+        viewModel.operationProperty().set(Operation.CALCULATE_PARALLELEPIPED_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("9.0", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateParallelipipedVolumeWithNegativeHeightHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.secondParameterProperty().set("-3");
+        viewModel.operationProperty().set(Operation.CALCULATE_PARALLELEPIPED_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("9.0", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateSphereVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("3");
+        viewModel.operationProperty().set(Operation.CALCULATE_SPHERE_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("113.09733552923254", viewModel.resultFldProperty().get());
+    }
+
+    @Test
+    public void operationCalculateOctahedronVolumeHasCorrectResult() {
+        viewModel.firstParameterProperty().set("1");
+        viewModel.operationProperty().set(Operation.CALCULATE_OCTAHEDRON_VOLUME);
+
+        viewModel.calculate();
+
+        assertEquals("0.4714045207910317", viewModel.resultFldProperty().get());
+    }
+
     private void setInputData() {
         viewModel.firstParameterProperty().set("1");
         viewModel.secondParameterProperty().set("12");
