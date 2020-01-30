@@ -23,6 +23,16 @@ public class FiguresVolumeCalculator {
 
     @FXML
     void initialize() {
+        txtFirstParameter.textProperty().bindBidirectional(viewModel.firstParameterProperty());
+        txtSecondParameter.textProperty().bindBidirectional(viewModel.secondParameterProperty());
 
+        comboBoxOperation.valueProperty().bindBidirectional(viewModel.operationProperty());
+
+        buttonCalc.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(final ActionEvent event) {
+                viewModel.calculate();
+            }
+        });
     }
 }
