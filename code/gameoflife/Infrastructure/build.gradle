@@ -1,4 +1,0 @@
-dependencies {
-    compile project(':GameOfLife-ViewModel')
-    testCompile project(':GameOfLife-ViewModel').sourceSets.test.output
-}

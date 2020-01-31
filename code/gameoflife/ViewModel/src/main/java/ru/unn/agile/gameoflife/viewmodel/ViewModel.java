@@ -11,37 +11,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewModel {
-    private final SimpleStringProperty heightField = new SimpleStringProperty();
-    private final SimpleStringProperty widthField = new SimpleStringProperty();
-    private final SimpleStringProperty statusText = new SimpleStringProperty();
-    private final SimpleBooleanProperty couldNotCreate = new SimpleBooleanProperty();
-    private final SimpleBooleanProperty couldNotGetNextStep = new SimpleBooleanProperty();
-    private final StringProperty logsField = new SimpleStringProperty();
-
-    private ILogger logger;
+    private SimpleStringProperty heightField = new SimpleStringProperty();
+    private SimpleStringProperty widthField = new SimpleStringProperty();
+    private SimpleStringProperty statusText = new SimpleStringProperty();
+    private SimpleBooleanProperty couldNotCreate = new SimpleBooleanProperty();
+    private SimpleBooleanProperty couldNotGetNextStep = new SimpleBooleanProperty();
 
     private GameOfLife gameOfLife;
     private char[][] gridArray;
 
     private final List<ValueChangeListener> valueChangedListeners = new ArrayList<>();
 
-    public final void setLogger(final ILogger logger) {
-        if (logger == null) {
-            throw new IllegalArgumentException("Logger value can not be null");
-        }
-        this.logger = logger;
-    }
-
     public ViewModel() {
-        init();
-    }
-
-    public ViewModel(final ILogger logger) {
-        setLogger(logger);
-        init();
-    }
-
-    private void init() {
         statusText.set(Status.WAITING.toString());
         couldNotGetNextStep.set(true);
         couldNotCreate.set(true);
@@ -58,18 +39,6 @@ public class ViewModel {
             field.addListener(listener);
             valueChangedListeners.add(listener);
         }
-    }
-
-    public StringProperty logsFieldProperty() {
-        return logsField;
-    }
-
-    public final String getLogsField() {
-        return logsField.get();
-    }
-
-    public final List<String> getLog() {
-        return logger.getLog();
     }
 
     public SimpleStringProperty heightFieldProperty() {
@@ -103,11 +72,6 @@ public class ViewModel {
 
             gridArray = gameOfLife.getGrid().clone();
             statusText.set(Status.INITIALISE.toString());
-            StringBuilder message = new StringBuilder(LogMessages.CREATE_WAS_PRESSED);
-            message.append("Size: height = ").append(heightField.get())
-                    .append("; width = ").append(widthField.get());
-            logger.log(message.toString());
-            updateLogs();
         }
     }
 
@@ -137,25 +101,11 @@ public class ViewModel {
             gameOfLife.setCell(y, x);
             gridArray = gameOfLife.getGrid().clone();
             statusText.set(Status.GAMING.toString());
-
-            StringBuilder message = new StringBuilder(LogMessages.CELL_WAS_CHANGED);
-            message.append("Cell at ").append(y)
-                    .append(", ").append(x)
-                    .append(" now is alive");
-            logger.log(message.toString());
-
             couldNotGetNextStep.set(false);
         } else {
             gameOfLife.deleteCell(y, x);
             gameOverCheck();
-
-            StringBuilder message = new StringBuilder(LogMessages.CELL_WAS_CHANGED);
-            message.append("Cell at ").append(y)
-                    .append(", ").append(x)
-                    .append(" now is dead");
-            logger.log(message.toString());
         }
-        updateLogs();
         gridArray = gameOfLife.getGrid().clone();
     }
 
@@ -163,19 +113,6 @@ public class ViewModel {
         gameOfLife.makeTurn();
         gridArray = gameOfLife.getGrid().clone();
         gameOverCheck();
-
-        StringBuilder message = new StringBuilder(LogMessages.NEXT_WAS_PRESSED);
-        logger.log(message.toString());
-        updateLogs();
-    }
-
-    private void updateLogs() {
-        List<String> fullLog = logger.getLog();
-        String newRecord = new String("");
-        for (String log : fullLog) {
-            newRecord += log + "\n";
-        }
-        logsField.set(newRecord);
     }
 
     private Status getInputStatus() {
@@ -230,12 +167,4 @@ enum Status {
     public String toString() {
         return name;
     }
-}
-
-final class LogMessages {
-    public static final String CREATE_WAS_PRESSED = "Create grid. ";
-    public static final String NEXT_WAS_PRESSED = "Next generation. ";
-    public static final String CELL_WAS_CHANGED = "Updated cell. ";
-
-    private LogMessages() { }
 }

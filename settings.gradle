@@ -51,8 +51,6 @@ include "code/gameoflife/ViewModel"
 project(":code/gameoflife/ViewModel").name = "GameOfLife-ViewModel"
 include "code/gameoflife/View"
 project(":code/gameoflife/View").name = "GameOfLife-View"
-include "code/gameoflife/Infrastructure"
-project(":code/gameoflife/Infrastructure").name = "GameOfLife-Infrastructure"
 // Антипин Никита
 // Ахмедов Саркар
 // temperature-converter

@@ -4,21 +4,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.List;
-
 import static org.junit.Assert.*;
 
 public class ViewModelTest {
     private ViewModel viewModel;
 
-    protected void setViewModel(final ViewModel viewModel) {
-        this.viewModel = viewModel;
-    }
-
     @Before
     public void setUp() {
-        FakeLogger logger = new FakeLogger();
-        viewModel = new ViewModel(logger);
+        viewModel = new ViewModel();
     }
 
     @After
@@ -233,131 +226,4 @@ public class ViewModelTest {
 
         assertTrue(viewModel.couldNotGetNextStepProperty().get());
     }
-
-    @Test
-    public void canCreateViewModelWithLogger() {
-        FakeLogger logger = new FakeLogger();
-        ViewModel viewModelLogged = new ViewModel(logger);
-
-        assertNotNull(viewModelLogged);
-    }
-
-    @Test
-    public void logIsEmptyInTheBeginning() {
-        List<String> log = viewModel.getLog();
-
-        assertTrue(log.isEmpty());
-    }
-
-    @Test
-    public void viewModelConstructorThrowsExceptionWithNullLogger() {
-        try {
-            new ViewModel(null);
-            fail("Exception wasn't thrown");
-        } catch (IllegalArgumentException ex) {
-            assertEquals("Logger value can not be null", ex.getMessage());
-        } catch (Exception ex) {
-            fail("Invalid exception type");
-        }
-    }
-
-    @Test
-    public void logContainsProperMessageAfterGridCreation() {
-        setInputData();
-
-        viewModel.createGrid();
-        String message = viewModel.getLog().get(0);
-
-        assertTrue(message.matches(".*" + LogMessages.CREATE_WAS_PRESSED + ".*"));
-    }
-
-    @Test
-    public void logContainsInputArgumentsAfterGridCreation() {
-        setInputData();
-
-        viewModel.createGrid();
-
-        String message = viewModel.getLog().get(0);
-        assertTrue(message.matches(".*" + viewModel.heightFieldProperty().get()
-                + ".*" + viewModel.widthFieldProperty().get() + ".*"));
-    }
-
-    @Test
-    public void canPutSeveralLogMessages() {
-        setInputData();
-
-        viewModel.createGrid();
-        viewModel.createGrid();
-        viewModel.createGrid();
-
-        assertEquals(3, viewModel.getLog().size());
-    }
-
-    @Test
-    public void logContainsProperMessageAfterMakingMove() {
-        setInputData();
-        viewModel.createGrid();
-
-        viewModel.getNextStep();
-
-        String message = viewModel.getLog().get(1);
-
-        assertTrue(message.matches(".*" + LogMessages.NEXT_WAS_PRESSED + ".*"));
-    }
-
-    @Test
-    public void logContainsProperMessageAfterMakingNewCell() {
-        setInputData();
-        viewModel.createGrid();
-
-        viewModel.changeCellStatus(2, 2);
-
-        String message = viewModel.getLog().get(1);
-
-        assertTrue(message.matches(".*" + LogMessages.CELL_WAS_CHANGED + ".*"));
-    }
-
-    @Test
-    public void logContainsCellPositionAfterMakingNewCell() {
-        final int cellPositionX = 3;
-        final int cellPositionY = 2;
-
-        setInputData();
-        viewModel.createGrid();
-
-        viewModel.changeCellStatus(cellPositionY, cellPositionX);
-
-        String message = viewModel.getLog().get(1);
-        assertTrue(message.matches(".*" + (char) (cellPositionY + '0')
-                        + ".*" + (char) (cellPositionX + '0') + ".*"));
-    }
-
-    @Test
-    public void logContainsCellConditionForAliveCell() {
-        setInputData();
-        viewModel.createGrid();
-
-        viewModel.changeCellStatus(3, 2);
-
-        String message = viewModel.getLog().get(1);
-        assertTrue(message.matches(".*" + "alive" + ".*"));
-    }
-
-    @Test
-    public void logContainsCellConditionForDeadCell() {
-        setInputData();
-        viewModel.createGrid();
-
-        viewModel.changeCellStatus(3, 2);
-        viewModel.changeCellStatus(3, 2);
-
-        String message = viewModel.getLog().get(2);
-        assertTrue(message.matches(".*" + "dead" + ".*"));
-    }
-
-    private void setInputData() {
-        viewModel.heightFieldProperty().set("5");
-        viewModel.widthFieldProperty().set("5");
-    }
-
 }
